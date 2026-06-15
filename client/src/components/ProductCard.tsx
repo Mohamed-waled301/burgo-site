@@ -62,9 +62,17 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       const cartRect = cartIcon.getBoundingClientRect();
 
       // Create animated floating replica
+      const isImageUrl = product.image.startsWith('/') || product.image.startsWith('http');
       const flyingEl = document.createElement('div');
-      flyingEl.innerText = product.image;
-      flyingEl.className = 'animate-fly-to-cart flex items-center justify-center rounded-xl bg-cream text-4xl shadow-lg border border-gray-300';
+      if (isImageUrl) {
+        const img = document.createElement('img');
+        img.src = product.image;
+        img.className = 'w-full h-full object-cover rounded-xl';
+        flyingEl.appendChild(img);
+      } else {
+        flyingEl.innerText = product.image;
+      }
+      flyingEl.className = 'animate-fly-to-cart flex items-center justify-center rounded-xl bg-cream text-4xl shadow-lg border border-gray-300 overflow-hidden';
       
       // Initial positioning matches original card image
       flyingEl.style.width = `${imgRect.width}px`;
@@ -103,10 +111,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         {/* Animated sizzle background */}
         <div className="absolute inset-0 opacity-10 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-primary via-transparent to-transparent group-hover:scale-125 transition-all duration-500" />
         
-        {/* Large Emoji visual */}
-        <span className="product-card-image text-8xl transition-transform duration-300 group-hover:scale-110 drop-shadow-lg">
-          {product.image}
-        </span>
+        {/* Product Image / Emoji visual */}
+        {product.image.startsWith('/') || product.image.startsWith('http') ? (
+          <img
+            src={product.image}
+            className="product-card-image w-full h-full object-cover transition-all duration-300 group-hover:scale-105"
+            alt={product.name}
+          />
+        ) : (
+          <span className="product-card-image text-8xl transition-transform duration-300 group-hover:scale-110 drop-shadow-lg">
+            {product.image}
+          </span>
+        )}
 
         {/* Promo badges */}
         <div className="absolute top-4 left-4 flex flex-col gap-2 pointer-events-none">

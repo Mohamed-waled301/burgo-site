@@ -7,7 +7,7 @@
     "admin": "Admin Panel"
   },
   "hero": {
-    "title": "Start Your Burger Experience",
+    "title": "Your Burger, Your Way",
     "subtitle": "Ready-to-cook burger boxes — fresh ingredients, you just grill it",
     "cta": "Explore Boxes"
   },
@@ -32,9 +32,9 @@
     "title": "Choose Your Box",
     "subtitle": "Every box is ready-to-grill, all ingredients included",
     "categoryAll": "All",
-    "categoryClassic": "Classic",
-    "categorySpicy": "Spicy",
-    "categoryPremium": "Premium",
+    "categoryBoxes": "Boxes",
+    "categoryAppetizers": "Appetizers",
+    "categoryAddons": "Add-ons",
     "ingredients": "📋 Ingredients:",
     "prepSteps": "🍳 Preparation steps:",
     "currency": "EGP",

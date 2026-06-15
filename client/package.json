@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^3.4.2",
+    "@types/three": "^0.184.1",
     "axios": "^1.7.2",
     "framer-motion": "^11.2.10",
     "i18next": "^23.11.5",
@@ -23,6 +24,7 @@
     "react-router-dom": "^6.23.1",
     "recharts": "^2.12.7",
     "sonner": "^1.5.0",
+    "three": "^0.184.0",
     "zod": "^3.23.8",
     "zustand": "^4.5.2"
   },
@@ -32,6 +34,7 @@
     "@vitejs/plugin-react": "^4.3.0",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
+    "puppeteer": "^25.1.0",
     "tailwindcss": "^3.4.4",
     "typescript": "^5.2.2",
     "vite": "^5.3.1"

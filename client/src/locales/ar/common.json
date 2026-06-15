@@ -7,8 +7,8 @@
     "admin": "لوحة التحكم"
   },
   "hero": {
-    "title": "ابدأ تجربتك مع برجر مختلف",
-    "subtitle": "بوكسات برجر جاهزة للتسوية — كل المكونات الطازجة، أنت بس اللي بتشوّيها",
+    "title": "برجرك علي مزاجك",
+    "subtitle": "بوكسات برجر جاهزة للتسوية — مكونات طازجة، عليك الشوي بس",
     "cta": "اكتشف البوكسات"
   },
   "howItWorks": {
@@ -32,9 +32,9 @@
     "title": "اختار بوكسك",
     "subtitle": "كل بوكس جاهز للتسوية، كل المكونات موجودة",
     "categoryAll": "الكل",
-    "categoryClassic": "كلاسيك",
-    "categorySpicy": "حار",
-    "categoryPremium": "بريميوم",
+    "categoryBoxes": "البوكسات",
+    "categoryAppetizers": "المقبلات",
+    "categoryAddons": "الإضافات",
     "ingredients": "📋 المكونات:",
     "prepSteps": "🍳 طريقة التحضير:",
     "currency": "جنيه",
