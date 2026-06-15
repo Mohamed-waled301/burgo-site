@@ -1,0 +1,6 @@
+# Exclude large unnecessary folders from Vercel upload
+client/node_modules
+server/node_modules
+client/public/models/kenney
+*.zip
+*.log

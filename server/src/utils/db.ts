@@ -45,7 +45,10 @@ interface DatabaseSchema {
   orders: Order[];
 }
 
-const DB_DIR = path.join(__dirname, '../data');
+// In Vercel serverless, __dirname is the compiled function dir; fall back gracefully
+const DB_DIR = process.env.DB_DIR
+  ? process.env.DB_DIR
+  : path.join(__dirname, '../data');
 const DB_FILE = path.join(DB_DIR, 'db.json');
 
 const defaultProducts: Product[] = [
