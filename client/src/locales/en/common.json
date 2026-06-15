@@ -1,0 +1,181 @@
+{
+  "brandName": "Burger Box 🍔",
+  "nav": {
+    "home": "Home",
+    "products": "Boxes",
+    "contact": "Contact Us",
+    "admin": "Admin Panel"
+  },
+  "hero": {
+    "title": "Start Your Burger Experience",
+    "subtitle": "Ready-to-cook burger boxes — fresh ingredients, you just grill it",
+    "cta": "Explore Boxes"
+  },
+  "howItWorks": {
+    "title": "How It Works",
+    "subtitle": "How to prepare your premium Burger Box at home",
+    "step1": "Choose Your Box",
+    "step1Desc": "Browse our selection and select the box that fits your taste and family size",
+    "step2": "Grill & Assemble",
+    "step2Desc": "Grill the fresh patty your way and assemble the sandwich using the included fresh toppings",
+    "step3": "Enjoy the Taste",
+    "step3Desc": "Experience restaurant-quality premium burgers made by your own hands at home"
+  },
+  "features": {
+    "freshMeat": "🥩 Fresh Beef",
+    "realCheese": "🧀 Real Cheese",
+    "freshBread": "🍞 Daily Fresh Bun",
+    "coldDelivery": "❄️ Chilled Delivery",
+    "readyTen": "⚡ Ready in 10 Mins"
+  },
+  "products": {
+    "title": "Choose Your Box",
+    "subtitle": "Every box is ready-to-grill, all ingredients included",
+    "categoryAll": "All",
+    "categoryClassic": "Classic",
+    "categorySpicy": "Spicy",
+    "categoryPremium": "Premium",
+    "ingredients": "📋 Ingredients:",
+    "prepSteps": "🍳 Preparation steps:",
+    "currency": "EGP",
+    "addToCart": "Add to Cart",
+    "onSale": "🔥 Discount",
+    "noProducts": "No burger boxes available right now"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "subtotal": "Subtotal",
+    "checkout": "Checkout",
+    "empty": "Your cart is empty. Explore our burger boxes and add them here!",
+    "itemsCount": "items"
+  },
+  "checkout": {
+    "title": "Checkout & Payment",
+    "orderSummary": "Order Summary",
+    "formTitle": "Customer Info & Delivery Address",
+    "name": "Full Name",
+    "namePlaceholder": "Enter your full name",
+    "phone": "Mobile Number",
+    "phonePlaceholder": "e.g. 01012345678",
+    "address": "Detailed Address",
+    "addressPlaceholder": "Street, building, apartment",
+    "governorate": "Governorate",
+    "notes": "Delivery Notes (optional)",
+    "notesPlaceholder": "Any special instructions for delivery driver",
+    "paymentMethod": "Payment Method",
+    "payCard": "💳 Bank Card (Visa/MC/Meeza)",
+    "payWallet": "📱 Mobile Wallet (Vodafone Cash)",
+    "payCod": "💵 Cash on Delivery (COD)",
+    "btnPayNow": "Pay Now",
+    "btnSubmitCod": "Confirm Order",
+    "validation": {
+      "nameRequired": "Name is required",
+      "phoneRequired": "Phone number is required",
+      "phoneFormat": "Invalid phone, must be exactly 11 digits",
+      "addressRequired": "Address is required",
+      "governorateRequired": "Governorate is required"
+    }
+  },
+  "success": {
+    "title": "Order Received Successfully! 🎉",
+    "message": "Thank you for trusting Burger Box. Your order has been registered, reviewed, and is being prepared for delivery.",
+    "orderNumber": "Your Order Number:",
+    "btnHome": "Back to Home",
+    "paymentSuccess": "Payment Successful!"
+  },
+  "admin": {
+    "login": {
+      "title": "Burger Box Control Panel",
+      "subtitle": "Sign in to manage products, orders, and reports",
+      "username": "Username",
+      "password": "Password",
+      "btn": "Sign In",
+      "error": "Invalid username or password"
+    },
+    "nav": {
+      "dashboard": "Analytics",
+      "products": "Products",
+      "orders": "Orders",
+      "logout": "Logout",
+      "title": "Dashboard"
+    },
+    "dashboard": {
+      "totalOrders": "Total Orders",
+      "pendingOrders": "Pending",
+      "revenue": "Revenue Today",
+      "aov": "Average Order Value",
+      "bestSeller": "Top Seller",
+      "chartTitle": "Orders & Revenue (Last 7 Days)",
+      "chartOrders": "Order Count",
+      "chartRevenue": "Revenue in EGP"
+    },
+    "products": {
+      "addBtn": "Add New Box",
+      "table": {
+        "image": "Image",
+        "name": "Name",
+        "price": "Price",
+        "category": "Category",
+        "badge": "Badge",
+        "discount": "Discount",
+        "actions": "Actions"
+      },
+      "form": {
+        "addTitle": "Add New Product",
+        "editTitle": "Edit Product",
+        "name": "Product Name",
+        "price": "Price (EGP)",
+        "description": "Description",
+        "category": "Category",
+        "image": "Image URL or emoji",
+        "badge": "Promo Badge",
+        "ingredients": "Ingredients (one per line)",
+        "prepSteps": "Prep Steps (one per line)",
+        "submit": "Save Product"
+      },
+      "discount": {
+        "title": "Apply Discount for",
+        "type": "Discount Type",
+        "percent": "Percentage (%)",
+        "fixed": "Fixed Amount (EGP)",
+        "value": "Discount Value",
+        "expiry": "Expiry Date (optional)",
+        "btn": "Apply Discount",
+        "remove": "Remove Discount"
+      },
+      "deleteConfirm": "Are you sure you want to delete this product?",
+      "noDiscount": "None"
+    },
+    "orders": {
+      "table": {
+        "id": "Order ID",
+        "name": "Name",
+        "phone": "Phone",
+        "products": "Products",
+        "total": "Total",
+        "payment": "Payment",
+        "status": "Status",
+        "actions": "Actions"
+      },
+      "statuses": {
+        "pending": "Pending",
+        "preparing": "Preparing",
+        "shipping": "Shipping",
+        "delivered": "Delivered",
+        "cancelled": "Cancelled"
+      },
+      "modal": {
+        "title": "Order Details",
+        "customerInfo": "Customer Info",
+        "governorate": "Governorate:",
+        "address": "Address:",
+        "notes": "Notes:",
+        "items": "Ordered Items",
+        "timeline": "Status Timeline",
+        "created": "Order Date:",
+        "statusUpdated": "Status updated successfully to"
+      },
+      "newOrderToast": "🔔 New order placed! Order #"
+    }
+  }
+}
