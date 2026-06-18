@@ -24,7 +24,8 @@ const GOVERNORATES_EN = [
 ];
 
 export const Checkout: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const navigate = useNavigate();
   
   const { items, getCartTotal, clearCart } = useCartStore();
@@ -67,7 +68,7 @@ export const Checkout: React.FC = () => {
   });
 
   const selectedPayment = watch('paymentMethod');
-  const lang = t('language');
+  const governorateList = isRTL ? GOVERNORATES_AR : GOVERNORATES_EN;
 
   const onSubmit = async (data: FormData) => {
     if (items.length === 0) return;
@@ -151,13 +152,11 @@ export const Checkout: React.FC = () => {
     }
   };
 
-  const governorateList = lang === 'en' ? GOVERNORATES_EN : GOVERNORATES_AR;
-
   if (items.length === 0) {
     return (
       <div className="mx-auto max-w-7xl px-4 py-20 text-center flex-1 flex flex-col justify-center select-none">
         <span className="text-6xl mb-6">🛒</span>
-        <h2 className="text-2xl font-bold font-display text-gray-900">{t('cart.empty')}</h2>
+        <h2 className="text-2xl font-bold font-display text-white">{t('cart.empty')}</h2>
         <button
           onClick={() => navigate('/products')}
           className="mt-6 mx-auto rounded-xl bg-primary hover:bg-primary-hover text-white px-8 py-3 font-semibold shadow transition duration-300"
@@ -169,13 +168,13 @@ export const Checkout: React.FC = () => {
   }
 
   return (
-    <div className="mx-auto max-w-7xl w-full px-4 py-12 sm:px-6 lg:px-8">
-      <h1 className="text-3xl font-extrabold font-display text-gray-900 mb-8 border-b border-gray-200 pb-4">
+    <div className="mx-auto max-w-7xl w-full px-4 py-12 sm:px-6 lg:px-8 text-charcoal transition-colors duration-300">
+      <h1 className="text-3xl font-black font-display text-charcoal mb-8 border-b border-border/40 pb-4">
         {t('checkout.title')}
       </h1>
 
       {checkoutError && (
-        <div className="mb-6 flex items-center gap-3 p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-sm">
+        <div className="mb-6 flex items-center gap-3 p-4 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-500 text-sm font-semibold animate-badge-pop">
           <AlertCircle className="h-5 w-5 shrink-0" />
           <span>{checkoutError}</span>
         </div>
@@ -186,14 +185,14 @@ export const Checkout: React.FC = () => {
         
         {/* Right side - Forms (col span 7) */}
         <form onSubmit={handleSubmit(onSubmit)} className="lg:col-span-7 space-y-6">
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
-            <h2 className="text-lg font-bold font-display text-gray-900 border-b border-gray-100 pb-3 mb-2">
+          <div className="bg-surface p-6 rounded-3xl border border-border/30 shadow-sm space-y-4">
+            <h2 className="text-lg font-black font-display text-charcoal border-b border-border/30 pb-3 mb-2">
               {t('checkout.formTitle')}
             </h2>
 
             {/* Name input */}
             <div>
-              <label htmlFor="customerName" className="block text-xs font-bold text-gray-700 mb-1.5">
+              <label htmlFor="customerName" className="block text-xs font-bold text-text-muted mb-1.5 uppercase tracking-wide">
                 {t('checkout.name')}
               </label>
               <input
@@ -201,14 +200,14 @@ export const Checkout: React.FC = () => {
                 type="text"
                 placeholder={t('checkout.namePlaceholder')}
                 {...register('customerName')}
-                className={`w-full rounded-xl border px-4 py-3 text-sm transition duration-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 ${
+                className={`w-full rounded-xl border px-4 py-3 text-sm transition duration-200 bg-background text-charcoal focus:bg-surface focus:outline-none focus:ring-2 ${
                   errors.customerName 
-                    ? 'border-red-300 focus:ring-red-200' 
-                    : 'border-gray-200 focus:border-primary focus:ring-primary/20'
+                    ? 'border-red-500/50 focus:ring-red-500/20' 
+                    : 'border-border/60 focus:border-primary focus:ring-primary/20'
                 }`}
               />
               {errors.customerName && (
-                <p className="mt-1 text-xs text-red-500 font-semibold">{errors.customerName.message}</p>
+                <p className="mt-1.5 text-xs text-red-500 font-bold">{errors.customerName.message}</p>
               )}
             </div>
 
@@ -216,59 +215,58 @@ export const Checkout: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {/* Phone input */}
               <div>
-                <label htmlFor="phone" className="block text-xs font-bold text-gray-700 mb-1.5">
+                <label htmlFor="phone" className="block text-xs font-bold text-text-muted mb-1.5 uppercase tracking-wide">
                   {t('checkout.phone')}
                 </label>
-                {/* LTR alignment for inputs */}
                 <input
                   id="phone"
                   type="tel"
                   placeholder={t('checkout.phonePlaceholder')}
                   dir="ltr"
                   {...register('phone')}
-                  className={`w-full rounded-xl border px-4 py-3 text-sm transition duration-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 text-start ${
+                  className={`w-full rounded-xl border px-4 py-3 text-sm transition duration-200 bg-background text-charcoal focus:bg-surface focus:outline-none focus:ring-2 text-start ${
                     errors.phone 
-                      ? 'border-red-300 focus:ring-red-200' 
-                      : 'border-gray-200 focus:border-primary focus:ring-primary/20'
+                      ? 'border-red-500/50 focus:ring-red-500/20' 
+                      : 'border-border/60 focus:border-primary focus:ring-primary/20'
                   }`}
                 />
                 {errors.phone && (
-                  <p className="mt-1 text-xs text-red-500 font-semibold">{errors.phone.message}</p>
+                  <p className="mt-1.5 text-xs text-red-500 font-bold">{errors.phone.message}</p>
                 )}
               </div>
 
               {/* Governorate selection */}
               <div>
-                <label htmlFor="governorate" className="block text-xs font-bold text-gray-700 mb-1.5">
+                <label htmlFor="governorate" className="block text-xs font-bold text-text-muted mb-1.5 uppercase tracking-wide">
                   {t('checkout.governorate')}
                 </label>
                 <select
                   id="governorate"
                   {...register('governorate')}
-                  className={`w-full rounded-xl border px-4 py-3 text-sm transition duration-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 ${
+                  className={`w-full rounded-xl border px-4 py-3 text-sm transition duration-200 bg-background text-charcoal focus:bg-surface focus:outline-none focus:ring-2 cursor-pointer ${
                     errors.governorate 
-                      ? 'border-red-300 focus:ring-red-200' 
-                      : 'border-gray-200 focus:border-primary focus:ring-primary/20'
+                      ? 'border-red-500/50 focus:ring-red-500/20' 
+                      : 'border-border/60 focus:border-primary focus:ring-primary/20'
                   }`}
                 >
                   <option value="">
-                    {lang === 'en' ? 'Select governorate' : 'اختر المحافظة'}
+                    {isRTL ? 'اختر المحافظة' : 'Select governorate'}
                   </option>
                   {governorateList.map((gov) => (
-                    <option key={gov} value={gov}>
+                    <option key={gov} value={gov} className="bg-surface text-charcoal">
                       {gov}
                     </option>
                   ))}
                 </select>
                 {errors.governorate && (
-                  <p className="mt-1 text-xs text-red-500 font-semibold">{errors.governorate.message}</p>
+                  <p className="mt-1.5 text-xs text-red-500 font-bold">{errors.governorate.message}</p>
                 )}
               </div>
             </div>
 
             {/* Address Input */}
             <div>
-              <label htmlFor="address" className="block text-xs font-bold text-gray-700 mb-1.5">
+              <label htmlFor="address" className="block text-xs font-bold text-text-muted mb-1.5 uppercase tracking-wide">
                 {t('checkout.address')}
               </label>
               <input
@@ -276,20 +274,20 @@ export const Checkout: React.FC = () => {
                 type="text"
                 placeholder={t('checkout.addressPlaceholder')}
                 {...register('address')}
-                className={`w-full rounded-xl border px-4 py-3 text-sm transition duration-200 bg-gray-50 focus:bg-white focus:outline-none focus:ring-2 ${
+                className={`w-full rounded-xl border px-4 py-3 text-sm transition duration-200 bg-background text-charcoal focus:bg-surface focus:outline-none focus:ring-2 ${
                   errors.address 
-                    ? 'border-red-300 focus:ring-red-200' 
-                    : 'border-gray-200 focus:border-primary focus:ring-primary/20'
+                    ? 'border-red-500/50 focus:ring-red-500/20' 
+                    : 'border-border/60 focus:border-primary focus:ring-primary/20'
                 }`}
               />
               {errors.address && (
-                <p className="mt-1 text-xs text-red-500 font-semibold">{errors.address.message}</p>
+                <p className="mt-1.5 text-xs text-red-500 font-bold">{errors.address.message}</p>
               )}
             </div>
 
             {/* Notes input */}
             <div>
-              <label htmlFor="notes" className="block text-xs font-bold text-gray-700 mb-1.5">
+              <label htmlFor="notes" className="block text-xs font-bold text-text-muted mb-1.5 uppercase tracking-wide">
                 {t('checkout.notes')}
               </label>
               <textarea
@@ -297,14 +295,14 @@ export const Checkout: React.FC = () => {
                 rows={3}
                 placeholder={t('checkout.notesPlaceholder')}
                 {...register('notes')}
-                className="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm transition duration-200 bg-gray-50 focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none resize-none"
+                className="w-full rounded-xl border border-border/50 px-4 py-3 text-sm transition duration-200 bg-background text-charcoal focus:bg-surface focus:border-primary focus:ring-2 focus:ring-primary/20 focus:outline-none resize-none"
               />
             </div>
           </div>
 
           {/* Payment Method Cards */}
-          <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-4">
-            <h2 className="text-lg font-bold font-display text-gray-900 border-b border-gray-100 pb-3 mb-2">
+          <div className="bg-surface p-6 rounded-3xl border border-border/30 shadow-sm space-y-4">
+            <h2 className="text-lg font-black font-display text-charcoal border-b border-border/30 pb-3 mb-2">
               {t('checkout.paymentMethod')}
             </h2>
 
@@ -313,45 +311,45 @@ export const Checkout: React.FC = () => {
               <button
                 type="button"
                 onClick={() => setValue('paymentMethod', 'card')}
-                className={`flex flex-col items-center justify-center p-4 rounded-xl border-2 text-center transition ${
+                className={`flex flex-col items-center justify-center p-4 rounded-2xl border-2 text-center transition focus:outline-none cursor-pointer ${
                   selectedPayment === 'card'
-                    ? 'border-primary bg-primary/5 text-primary'
-                    : 'border-gray-200 hover:border-gray-300 text-gray-500 bg-white'
+                    ? 'border-primary bg-primary/10 text-primary'
+                    : 'border-border/60 hover:border-border text-text-muted bg-background hover:bg-border/20'
                 }`}
               >
                 <CreditCard className="h-6 w-6 mb-2 shrink-0" />
-                <span className="text-sm font-bold block">{lang === 'en' ? 'Credit Card' : 'بطاقة بنكية'}</span>
-                <span className="text-[10px] text-gray-400 mt-1 block">Visa/MasterCard</span>
+                <span className="text-sm font-extrabold block">{isRTL ? 'بطاقة بنكية' : 'Credit Card'}</span>
+                <span className="text-[10px] text-text-muted/65 mt-1 block">Visa/MasterCard</span>
               </button>
 
               {/* Wallet option */}
               <button
                 type="button"
                 onClick={() => setValue('paymentMethod', 'wallet')}
-                className={`flex flex-col items-center justify-center p-4 rounded-xl border-2 text-center transition ${
+                className={`flex flex-col items-center justify-center p-4 rounded-2xl border-2 text-center transition focus:outline-none cursor-pointer ${
                   selectedPayment === 'wallet'
-                    ? 'border-primary bg-primary/5 text-primary'
-                    : 'border-gray-200 hover:border-gray-300 text-gray-500 bg-white'
+                    ? 'border-primary bg-primary/10 text-primary'
+                    : 'border-border/60 hover:border-border text-text-muted bg-background hover:bg-border/20'
                 }`}
               >
                 <Wallet className="h-6 w-6 mb-2 shrink-0" />
-                <span className="text-sm font-bold block">{lang === 'en' ? 'Mobile Wallet' : 'محفظة إلكترونية'}</span>
-                <span className="text-[10px] text-gray-400 mt-1 block">Vodafone Cash</span>
+                <span className="text-sm font-extrabold block">{isRTL ? 'محفظة إلكترونية' : 'Mobile Wallet'}</span>
+                <span className="text-[10px] text-text-muted/65 mt-1 block">Vodafone Cash</span>
               </button>
 
               {/* COD option */}
               <button
                 type="button"
                 onClick={() => setValue('paymentMethod', 'cod')}
-                className={`flex flex-col items-center justify-center p-4 rounded-xl border-2 text-center transition ${
+                className={`flex flex-col items-center justify-center p-4 rounded-2xl border-2 text-center transition focus:outline-none cursor-pointer ${
                   selectedPayment === 'cod'
-                    ? 'border-primary bg-primary/5 text-primary'
-                    : 'border-gray-200 hover:border-gray-300 text-gray-500 bg-white'
+                    ? 'border-primary bg-primary/10 text-primary'
+                    : 'border-border/60 hover:border-border text-text-muted bg-background hover:bg-border/20'
                 }`}
               >
                 <CircleDollarSign className="h-6 w-6 mb-2 shrink-0" />
-                <span className="text-sm font-bold block">{lang === 'en' ? 'Cash on Delivery' : 'الدفع عند الاستلام'}</span>
-                <span className="text-[10px] text-gray-400 mt-1 block">Cash on Delivery</span>
+                <span className="text-sm font-extrabold block">{isRTL ? 'الدفع عند الاستلام' : 'Cash on Delivery'}</span>
+                <span className="text-[10px] text-text-muted/65 mt-1 block">Cash on Delivery</span>
               </button>
             </div>
           </div>
@@ -360,7 +358,7 @@ export const Checkout: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full flex h-14 items-center justify-center rounded-xl bg-primary hover:bg-primary-hover text-base font-bold text-white shadow-lg shadow-primary/20 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none cursor-pointer"
+            className="w-full flex h-14 items-center justify-center rounded-2xl bg-primary hover:bg-primary-hover text-base font-bold text-white shadow-lg shadow-primary/20 transition-all hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50 disabled:pointer-events-none cursor-pointer border-0"
           >
             {isSubmitting ? (
               <div className="h-5 w-5 rounded-full border-2 border-white border-t-transparent animate-spinner" />
@@ -373,41 +371,45 @@ export const Checkout: React.FC = () => {
         </form>
 
         {/* Left side - Order Summary (col span 5) */}
-        <aside className="lg:col-span-5 bg-white p-6 rounded-2xl border border-gray-100 shadow-sm space-y-6">
-          <h2 className="text-lg font-bold font-display text-gray-900 border-b border-gray-100 pb-3">
+        <aside className="lg:col-span-5 bg-surface p-6 rounded-3xl border border-border/30 shadow-sm space-y-6">
+          <h2 className="text-lg font-black font-display text-charcoal border-b border-border/30 pb-3">
             {t('checkout.orderSummary')}
           </h2>
 
-          <div className="divide-y divide-gray-100 max-h-96 overflow-y-auto pr-1">
+          <div className="divide-y divide-border/30 max-h-96 overflow-y-auto pr-1">
             {items.map((item) => (
               <div key={item.id} className="flex items-center gap-4 py-3 first:pt-0 last:pb-0">
-                <div className="h-12 w-12 rounded-lg bg-cream flex items-center justify-center border border-gray-100 text-2xl shrink-0">
-                  {item.image}
+                <div className="h-12 w-12 rounded-xl bg-background flex items-center justify-center border border-border/40 text-2xl shrink-0 overflow-hidden select-none">
+                  {item.image.startsWith('/') || item.image.startsWith('http') ? (
+                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                  ) : (
+                    item.image
+                  )}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h4 className="text-xs font-semibold text-gray-900 truncate leading-snug">{item.name}</h4>
-                  <p className="mt-1 text-xs text-gray-400 font-price">
+                  <h4 className="text-xs font-bold text-charcoal truncate leading-snug">{item.name}</h4>
+                  <p className="mt-1 text-xs text-text-muted font-price font-bold">
                     {item.quantity} × {item.price} {t('products.currency')}
                   </p>
                 </div>
-                <span className="font-price font-bold text-xs text-gray-900 shrink-0">
+                <span className="font-price font-extrabold text-xs text-charcoal shrink-0">
                   {item.price * item.quantity} {t('products.currency')}
                 </span>
               </div>
             ))}
           </div>
 
-          <div className="border-t border-gray-100 pt-4 space-y-3">
-            <div className="flex items-center justify-between text-xs text-gray-500">
-              <span>{t('language') === 'en' ? 'Subtotal' : 'الإجمالي الفرعي'}</span>
-              <span className="font-price font-medium">{totalAmount} {t('products.currency')}</span>
+          <div className="border-t border-border/30 pt-4 space-y-3">
+            <div className="flex items-center justify-between text-xs text-text-muted font-medium">
+              <span>{isRTL ? 'الإجمالي الفرعي' : 'Subtotal'}</span>
+              <span className="font-price font-bold">{totalAmount} {t('products.currency')}</span>
             </div>
-            <div className="flex items-center justify-between text-xs text-gray-500">
-              <span>{t('language') === 'en' ? 'Delivery Fees' : 'رسوم التوصيل'}</span>
-              <span className="text-green-600 font-bold">{t('language') === 'en' ? 'FREE' : 'مجاني'}</span>
+            <div className="flex items-center justify-between text-xs text-text-muted font-medium">
+              <span>{isRTL ? 'رسوم التوصيل' : 'Delivery Fees'}</span>
+              <span className="text-green-500 font-extrabold">{isRTL ? 'مجاني' : 'FREE'}</span>
             </div>
-            <div className="flex items-center justify-between text-base font-bold text-gray-900 border-t border-gray-100 pt-3">
-              <span>{t('language') === 'en' ? 'Total' : 'الإجمالي الكلي'}</span>
+            <div className="flex items-center justify-between text-base font-black text-charcoal border-t border-border/30 pt-3">
+              <span>{isRTL ? 'الإجمالي الكلي' : 'Total'}</span>
               <span className="font-price text-lg text-primary">{totalAmount} {t('products.currency')}</span>
             </div>
           </div>

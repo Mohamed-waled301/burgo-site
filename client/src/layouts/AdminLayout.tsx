@@ -5,6 +5,7 @@ import { toast } from 'sonner';
 import { LogOut, LayoutDashboard, Utensils, ClipboardList, TrendingUp } from 'lucide-react';
 import { useAuthStore } from '../store/useAuthStore';
 import { useOrderStore } from '../store/useOrderStore';
+import { LanguageSwitcher } from '../components/LanguageSwitcher';
 import api from '../services/api';
 
 interface StatsSummary {
@@ -14,7 +15,8 @@ interface StatsSummary {
 }
 
 export const AdminLayout: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
   const navigate = useNavigate();
   const location = useLocation();
   
@@ -81,7 +83,6 @@ export const AdminLayout: React.FC = () => {
         
         toast.warning(`${msg} ${orderId}`, {
           duration: 6000,
-          icon: '🔔',
         });
 
         // Reset flash badge after 10 seconds
@@ -101,14 +102,14 @@ export const AdminLayout: React.FC = () => {
   const handleLogout = () => {
     logout();
     navigate('/');
-    toast.success(t('language') === 'en' ? 'Logged out successfully' : 'تم تسجيل الخروج بنجاح');
+    toast.success(isRTL ? 'تم تسجيل الخروج بنجاح' : 'Logged out successfully');
   };
 
   const menuItems = [
     { path: '/admin/dashboard', label: t('admin.nav.dashboard'), icon: LayoutDashboard },
     { path: '/admin/products', label: t('admin.nav.products'), icon: Utensils },
     { path: '/admin/orders', label: t('admin.nav.orders'), icon: ClipboardList, badge: flashBadge },
-    { path: '/admin/analytics', label: t('language') === 'en' ? 'Detailed Reports' : 'التقارير التفصيلية', icon: TrendingUp },
+    { path: '/admin/analytics', label: isRTL ? 'التقارير التفصيلية' : 'Detailed Reports', icon: TrendingUp },
   ];
 
   return (
@@ -116,9 +117,7 @@ export const AdminLayout: React.FC = () => {
       {/* Top Navbar */}
       <header className="bg-gray-900 border-b border-gray-800 sticky top-0 z-40 shadow-lg px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between gap-4 flex-wrap sm:flex-nowrap">
-          {/* Logo Title */}
           <div className="flex items-center gap-2">
-            <span className="text-2xl">🍔</span>
             <span className="font-display font-bold text-lg text-white">
               {t('admin.nav.title')}
             </span>
@@ -142,6 +141,7 @@ export const AdminLayout: React.FC = () => {
 
           {/* Logout & Lang */}
           <div className="flex items-center gap-3">
+            <LanguageSwitcher />
             <button
               onClick={handleLogout}
               className="flex items-center gap-1 text-xs md:text-sm text-red-400 hover:text-red-300 font-bold bg-red-950/30 hover:bg-red-950/50 px-3 py-1.5 rounded-lg border border-red-900/40 transition"

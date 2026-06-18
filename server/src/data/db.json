@@ -2,365 +2,289 @@
   "products": [
     {
       "id": 1,
-      "name": "Classic Smash Burger Box",
-      "description": "البرجر الكلاسيكي الأصيل — لحمة سميكة مع جبن أمريكي",
-      "price": 189,
-      "badge": null,
-      "image": "/ref/IMG-20260615-WA0026.jpg",
+      "name": "BURGO Family Box",
+      "description": "التجربة العائلية المتكاملة لمحترفي البرجر في البيت. (يكفي حتى 6 أشخاص)",
+      "price": 580,
+      "badge": "Limited Time",
+      "image": "/ref/IMG-20260615-WA0027.jpg",
       "category": "boxes",
       "ingredients": [
-        "لحمة بقر 180g",
-        "جبن أمريكي",
-        "خس",
-        "طماطم",
-        "بصل مكرمل",
-        "صوص Burger Box الخاص"
+        "6 Angus beef patties (150g each) stuffed with American cheddar",
+        "6 fresh buffalo buns",
+        "12 sauces chosen by customer",
+        "6 creamy cheddar sauces",
+        "1 classic ketchup bottle (140g)",
+        "1 premium pickles jar (140g)"
       ],
       "prepSteps": [
-        "سخن المقلاة على نار عالية",
-        "حط اللحمة واسحقها بالمقلاة 3 دقايق",
-        "اقلبها وحط الجبن فوقها",
-        "ركّب السندوتش وبالهنا"
-      ]
+        "Preheat grill or pan on high heat",
+        "Grill patties for 4-5 minutes per side (do not press down)",
+        "Lightly toast buffalo buns with butter",
+        "Distribute pickles and your favorite sauces and assemble sandwiches"
+      ],
+      "active": true
     },
     {
       "id": 2,
-      "name": "Spicy Crispy Box",
-      "description": "برجر حار وقرمشي — مش لضعاف القلب",
-      "price": 219,
-      "badge": "🌶️ حار",
-      "image": "/ref/IMG-20260615-WA0026.jpg",
+      "name": "BURGO 4x4 Box",
+      "description": "الحجم المثالي للمجموعات الصغيرة واللمة اللي مظبوطة ع الفرازة. (يكفي حتى 4 أشخاص)",
+      "price": 399,
+      "badge": null,
+      "image": "/ref/IMG-20260615-WA0027.jpg",
       "category": "boxes",
       "ingredients": [
-        "لحمة دجاج مقلية",
-        "صوص فلفل حار",
-        "كول سلو",
-        "مخلل جالبينيو",
-        "خبز بريوش"
+        "4 Angus beef patties (150g each) stuffed with American cheddar",
+        "4 fresh buffalo buns",
+        "8 sauces chosen by customer",
+        "4 creamy cheddar sauces",
+        "1 classic ketchup bottle (140g)",
+        "1 premium pickles jar (140g)"
       ],
       "prepSteps": [
-        "سخن الزيت على 180 درجة",
-        "قلي الدجاج 6-8 دقايق",
-        "صفّيه وركّب السندوتش"
-      ]
+        "Preheat grill or pan on high heat",
+        "Grill patties for 4-5 minutes per side (do not press down)",
+        "Lightly toast buffalo buns with butter",
+        "Distribute pickles and your favorite sauces and assemble sandwiches"
+      ],
+      "active": false
     },
     {
       "id": 3,
-      "name": "Premium Wagyu Box",
-      "description": "تجربة راقية مع لحمة واغيو الفاخرة",
-      "price": 349,
-      "badge": "⭐ Premium",
-      "image": "/ref/IMG-20260615-WA0026.jpg",
+      "name": "BURGO Du Box",
+      "description": "الخيار المثالي لشخصين أو لجوع بليل اللي محتاج طاقة ودلع. (يكفي شخصين)",
+      "price": 250,
+      "badge": null,
+      "image": "/ref/IMG-20260615-WA0027.jpg",
       "category": "boxes",
       "ingredients": [
-        "لحمة واغيو 200g",
-        "جبن تريفل",
-        "أفوكادو",
-        "أروجولا",
-        "صوص ترياكي",
-        "خبز بريوش أسود"
+        "2 Angus beef patties (150g each) stuffed with American cheddar",
+        "2 fresh buffalo buns",
+        "4 sauces chosen by customer",
+        "2 creamy cheddar sauces",
+        "1 classic ketchup bottle (140g)",
+        "1 premium pickles jar (140g)"
       ],
       "prepSteps": [
-        "سخن الجريل على نار متوسطة-عالية",
-        "اشوي اللحمة 4 دقايق كل جهة",
-        "استنّيها ترتاح دقيقتين قبل التقديم"
-      ]
+        "Preheat grill or pan on high heat",
+        "Grill patties for 4-5 minutes per side (do not press down)",
+        "Lightly toast buffalo buns with butter",
+        "Distribute pickles and your favorite sauces and assemble sandwiches"
+      ],
+      "active": false
     },
     {
       "id": 4,
-      "name": "Double Smash Box",
-      "description": "ضعف اللحم، ضعف المتعة",
-      "price": 259,
-      "badge": "🔥 الأكثر مبيعاً",
-      "image": "/ref/IMG-20260615-WA0026.jpg",
-      "category": "boxes",
-      "ingredients": [
-        "لحمتين بقر 150g",
-        "جبن شيدر مزدوج",
-        "بيض مقلي",
-        "بيكون",
-        "صوص Burger Box Supreme"
-      ],
-      "prepSteps": [
-        "اعمل الخطوات نفس Classic Smash",
-        "أضف البيض المقلي فوق الجبن",
-        "ركّب الطبقتين"
-      ]
-    },
-    {
-      "id": 5,
-      "name": "BBQ Smoky Box",
-      "description": "برجر بنكهة الشواء والدخان الأصيل",
-      "price": 229,
-      "badge": null,
-      "image": "/ref/IMG-20260615-WA0026.jpg",
-      "category": "boxes",
-      "ingredients": [
-        "لحمة بقر 200g",
-        "صوص BBQ مدخن",
-        "بصل مكرمل",
-        "جبن سموك",
-        "خيار مخلل"
-      ],
-      "prepSteps": [
-        "شوّي اللحمة على نار متوسطة 5 دقايق كل جهة",
-        "دهن صوص BBQ آخر دقيقة",
-        "ركّب مع البصل المكرمل"
-      ]
-    },
-    {
-      "id": 6,
-      "name": "Veggie Power Box",
-      "description": "بوكس نباتي مش هتحس إنك بتفوّت حاجة",
-      "price": 169,
-      "badge": "🌱 نباتي",
-      "image": "/ref/IMG-20260615-WA0026.jpg",
-      "category": "boxes",
-      "ingredients": [
-        "باتي فطر بورتوبيلو",
-        "جبن موزاريلا",
-        "فلفل مشوي",
-        "بيستو",
-        "خبز سياباتا"
-      ],
-      "prepSteps": [
-        "شوّي الفطر على نار عالية دقيقتين كل جهة",
-        "حط الجبن وغطّيه لحظة",
-        "ركّب مع الفلفل والبيستو"
-      ]
-    },
-    {
-      "id": 7,
-      "name": "BURGO Family Box (4 Pieces - 600g)",
-      "description": "بوكس برجر بورجو العائلي المميز (4 قطع برجر 600 جم محشية جبن شيدر أمريكي غني فاخر وممتاز، 4 عيش بافلو، صوصات ومخلل).",
-      "price": 250,
-      "badge": "⭐ عائلي",
-      "image": "/ref/IMG-20260615-WA0027.jpg",
-      "category": "boxes",
-      "ingredients": [
-        "4 قطع برجر أنجوس 150جم محشية شيدر",
-        "4 قطع خبز بافلو المميز",
-        "خيار مخلل مقرمش 100 جم",
-        "صوص باربكيو 25 جم وصوص رانش 25 جم",
-        "شيدر أمريكي وكاتشب"
-      ],
-      "prepSteps": [
-        "اشوي قطع البرجر على جريل ساخن 4-5 دقائق لكل جهة",
-        "قم بتحميص خبز بافلو قليلاً",
-        "أضف الخيار المخلل والصوصات المفضلة لديك",
-        "ركّب السندوتشات واستمتع مع العائلة"
-      ]
-    },
-    {
-      "id": 8,
-      "name": "BURGO Mega Box (7 Pieces - 1050g)",
-      "description": "بوكس برجر بورجو الضخم المثالي للمجموعات (7 قطع برجر 1050 جم محشية جبن شيدر أمريكي غني فاخر وممتاز، 7 عيش بافلو، صوصات ومخلل).",
-      "price": 450,
-      "badge": "🔥 التوفير الأكبر",
-      "image": "/ref/IMG-20260615-WA0027.jpg",
-      "category": "boxes",
-      "ingredients": [
-        "7 قطع برجر أنجوس 150جم محشية شيدر",
-        "7 قطع خبز بافلو المميز",
-        "خيار مخلل مقرمش 100 جم",
-        "صوصات باربكيو ورانش متنوعة",
-        "شرائح جبن شيدر إضافية وكاتشب"
-      ],
-      "prepSteps": [
-        "اشوي قطع البرجر على جريل ساخن 4-5 دقائق لكل جهة",
-        "حمص خبز بافلو اللذيذ",
-        "وزع الصوصات والمخلل بالتساوي",
-        "استمتع باللمة وطعم بورجو الأصيل"
-      ]
-    },
-    {
-      "id": 9,
       "name": "French Fries (200g)",
       "description": "بطاطس مقلية مقرمشة وذهبية محضرة بأعلى جودة.",
       "price": 40,
-      "badge": "🍟 كلاسيك",
+      "badge": "Classic",
       "image": "/ref/IMG-20260615-WA0034.jpg",
       "category": "appetizers",
       "ingredients": [
-        "بطاطس أصابع طازجة",
-        "ملح بحري خفيف"
+        "Fresh cut potatoes",
+        "Sea salt"
       ],
       "prepSteps": [
-        "سخن الزيت أو القلاية الهوائية",
-        "اقلِ البطاطس حتى تصبح ذهبية ومقرمشة",
-        "أضف الملح والتوابل المفضلة لديك وقدمها ساخنة"
-      ]
+        "Heat oil or air fryer",
+        "Fry until golden and crispy",
+        "Season and serve hot"
+      ],
+      "active": true
     },
     {
-      "id": 10,
+      "id": 5,
       "name": "Crinkle-cut Fries (200g)",
       "description": "بطاطس مقلية مموجة (كرانكل كت) مقرمشة بشكل رائع ونكهة غنية.",
       "price": 55,
-      "badge": "✨ مميز",
+      "badge": "Popular",
       "image": "/ref/IMG-20260615-WA0035.jpg",
       "category": "appetizers",
       "ingredients": [
-        "بطاطس كرانكل كت مموجة",
-        "ملح وتوابل بورجو الخاصة"
+        "Crinkle cut potatoes",
+        "Burgo special spices"
       ],
       "prepSteps": [
-        "اقلها في زيت غزير ساخن لمدة 4-5 دقائق",
-        "صفها جيداً من الزيت",
-        "قدمها مع صوص الشيدر أو الكاتشب"
-      ]
+        "Fry in hot oil for 4-5 minutes",
+        "Drain well",
+        "Serve with ketchup or cheese dip"
+      ],
+      "active": true
     },
     {
-      "id": 11,
+      "id": 6,
       "name": "Onion Rings (200g)",
-      "description": "من أجود أنواع حلقات البصل الأمريكية المقرمشة، محضرة بعناية لتكون الرفيق المثالي لوجبتك.",
+      "description": "حلقات البصل الأمريكية المقرمشة، محضرة بعناية لتكون الرفيق المثالي لوجبتك.",
       "price": 70,
-      "badge": "🧅 مقرمش جداً",
+      "badge": "Extra Crispy",
       "image": "/ref/IMG-20260615-WA0033.jpg",
       "category": "appetizers",
       "ingredients": [
-        "حلقات بصل طازجة مغطاة بفتات الخبز الذهبي"
+        "American sweet onion rings",
+        "Crispy breadcrumbs coating"
       ],
       "prepSteps": [
-        "اقلها في زيت ساخن حتى تأخذ لوناً ذهبياً غامقاً",
-        "قدمها مباشرة وهي ساخنة للحفاظ على القرمشة"
-      ]
+        "Deep fry until deep golden brown",
+        "Serve hot immediately"
+      ],
+      "active": true
     },
     {
-      "id": 12,
+      "id": 7,
       "name": "Angus Burger Patty (150g)",
       "description": "قطعة برجر أمريكي من لحم الأنجوس الفاخر، محشية بجبنة شيدر أمريكي غنية وفاخرة لتجربة لا تُنسى.",
       "price": 80,
-      "badge": "🥩 لحم أنجوس فاخر",
+      "badge": "Angus Beef",
       "image": "/ref/IMG-20260615-WA0036.jpg",
       "category": "addons",
       "ingredients": [
-        "لحم أنجوس فاخر 150 جم",
-        "حشوة جبن شيدر أمريكي أصلي"
+        "150g premium Angus beef",
+        "American cheddar cheese stuffing"
       ],
       "prepSteps": [
-        "اشوِ القطعة على جريل ساخن",
-        "لا تقم بالضغط عليها أثناء الشوي للحفاظ على حشوة الشيدر بالداخل"
-      ]
+        "Grill on high heat",
+        "Do not press down to keep cheddar inside"
+      ],
+      "active": true
     },
     {
-      "id": 13,
+      "id": 8,
       "name": "Buffalo Bread (عيش بافلو المميز)",
       "description": "خبز البافلو المميز، هش، طري، وطازج، يُخبز يومياً ليضيف لمسة مثالية لكل ساندوتش.",
       "price": 15,
-      "badge": "🍞 طازج يومياً",
+      "badge": "Freshly Baked",
       "image": "/ref/IMG-20260615-WA0038.jpg",
       "category": "addons",
       "ingredients": [
-        "دقيق فاخر، خميرة، حليب، زبدة"
+        "Premium flour, milk, butter"
       ],
       "prepSteps": [
-        "افتح الخبز من المنتصف ونصف حمصه على الجريل مع القليل من الزبدة"
-      ]
+        "Split and toast on grill with butter"
+      ],
+      "active": true
     },
     {
-      "id": 14,
+      "id": 9,
       "name": "Pickled Cucumber (100g)",
       "description": "خيار مخلل أمريكي مقرمش ومختار بعناية، يضيف النكهة الحامضة والمنعشة التي تجعل تجربة البرجر مكتملة.",
       "price": 30,
-      "badge": "🥒 مقرمش وحامض",
+      "badge": "Crunchy",
       "image": "/ref/IMG-20260615-WA0039.jpg",
       "category": "addons",
       "ingredients": [
-        "خيار مخلل شرائح أمريكي مقرمش"
+        "Premium sliced pickled cucumber"
       ],
       "prepSteps": [
-        "أضف شرائح الخيار المخلل فوق شريحة البرجر والجبن مباشرة"
-      ]
+        "Add on top of the cooked patty and cheese"
+      ],
+      "active": true
     },
     {
-      "id": 15,
+      "id": 10,
       "name": "BBQ Sauce (25g)",
       "description": "صوص باربكيو مدخن غني ولذيذ مثالي للتغميس وإضافة نكهة الشواء.",
       "price": 7.5,
-      "badge": "🔥 مدخن",
+      "badge": "Smoky",
       "image": "/ref/IMG-20260615-WA0027.jpg",
       "category": "addons",
       "ingredients": [
-        "صوص باربكيو مدخن فاخر"
+        "Smoky BBQ sauce recipe"
       ],
       "prepSteps": [
-        "يقدم كغموس جانبي أو يدهن على الخبز"
-      ]
+        "Serve as dip or spread on bun"
+      ],
+      "active": true
     },
     {
-      "id": 16,
+      "id": 11,
       "name": "Ranch Sauce (25g)",
       "description": "صوص رانش كريمي غني بنكهة الثوم والأعشاب اللذيذة.",
       "price": 12,
-      "badge": "🌿 كريمي",
+      "badge": "Creamy",
       "image": "/ref/IMG-20260615-WA0027.jpg",
       "category": "addons",
       "ingredients": [
-        "صوص رانش كريمي بالأعشاب"
+        "Creamy herb ranch dressing"
       ],
       "prepSteps": [
-        "يقدم كغموس جانبي للبطاطس وحلقات البصل"
-      ]
+        "Serve as dip for fries or onion rings"
+      ],
+      "active": true
     },
     {
-      "id": 17,
+      "id": 12,
       "name": "Cheddar Cheese Sauce (15g)",
       "description": "صوص شيدر مميز، غني، وساخن، يضفي نكهة لا تُقاوم تجعل وجبتك أكثر متعة وجاذبية.",
       "price": 12,
-      "badge": "🧀 جبن غني",
+      "badge": "Rich Cheese",
       "image": "/ref/IMG-20260615-WA0037.jpg",
       "category": "addons",
       "ingredients": [
-        "صوص جبنة شيدر غني 15 جرام"
+        "Warm cheddar cheese sauce"
       ],
       "prepSteps": [
-        "سخن الكيس قليلاً بالماء الدافئ ثم اسكبه فوق البرجر أو البطاطس"
-      ]
+        "Pour over fries or burger"
+      ],
+      "active": true
     },
     {
-      "id": 18,
+      "id": 13,
       "name": "Ketchup Sauce (140g)",
       "description": "باكت كاتشب من أجود الأنواع المتاحة، مذاق غني يساعد على التغميس ويبرز نكهة البرجر والبطاطس المميزة.",
       "price": 20,
-      "badge": "🍅 غني بالطماطم",
+      "badge": "Tomato",
       "image": "/ref/IMG-20260615-WA0040.jpg",
       "category": "addons",
       "ingredients": [
-        "كاتشب طماطم طبيعي 140 جرام"
+        "Classic tomato ketchup"
       ],
       "prepSteps": [
-        "افتح الباكت واستخدمه للتغميس أو صبه داخل الساندوتش"
-      ]
+        "Serve as dip"
+      ],
+      "active": true
     }
   ],
   "orders": [
     {
-      "id": "65199",
+      "id": "58010",
       "customerName": "ggg",
       "phone": "01207091650",
-      "address": "5 شارع مدرسة ابو يوسف",
+      "address": "5شارع ",
       "governorate": "الإسكندرية",
-      "notes": "",
+      "notes": "dd",
       "items": [
         {
-          "id": 5,
-          "name": "BBQ Smoky Box",
-          "price": 229,
+          "id": 1,
+          "name": "BURGO Family Box",
+          "price": 580,
           "quantity": 1,
-          "image": "/ref/IMG-20260615-WA0026.jpg"
-        },
-        {
-          "id": 6,
-          "name": "Veggie Power Box",
-          "price": 169,
-          "quantity": 1,
-          "image": "/ref/IMG-20260615-WA0026.jpg"
+          "image": "/ref/IMG-20260615-WA0027.jpg"
         }
       ],
-      "total": 398,
-      "paymentMethod": "card",
+      "total": 580,
+      "paymentMethod": "cod",
       "status": "delivered",
-      "createdAt": "2026-06-15T02:27:35.216Z"
+      "createdAt": "2026-06-18T00:40:01.947Z"
+    },
+    {
+      "id": "83567",
+      "customerName": "محمد",
+      "phone": "01222222222",
+      "address": "5 شارع",
+      "governorate": "الإسكندرية",
+      "notes": "22",
+      "items": [
+        {
+          "id": 1,
+          "name": "BURGO Family Box",
+          "price": 580,
+          "quantity": 4,
+          "image": "/ref/IMG-20260615-WA0027.jpg"
+        }
+      ],
+      "total": 2320,
+      "paymentMethod": "cod",
+      "status": "delivered",
+      "createdAt": "2026-06-18T00:54:54.756Z"
     }
   ]
 }

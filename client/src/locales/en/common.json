@@ -1,5 +1,5 @@
 {
-  "brandName": "Burger Box 🍔",
+  "brandName": "Burgo",
   "nav": {
     "home": "Home",
     "products": "Boxes",
@@ -8,12 +8,12 @@
   },
   "hero": {
     "title": "Your Burger, Your Way",
-    "subtitle": "Ready-to-cook burger boxes — fresh ingredients, you just grill it",
+    "subtitle": "Ready-to-cook burger boxes with fresh ingredients, you just grill it",
     "cta": "Explore Boxes"
   },
   "howItWorks": {
     "title": "How It Works",
-    "subtitle": "How to prepare your premium Burger Box at home",
+    "subtitle": "How to prepare your premium Burgo Box at home",
     "step1": "Choose Your Box",
     "step1Desc": "Browse our selection and select the box that fits your taste and family size",
     "step2": "Grill & Assemble",
@@ -22,11 +22,11 @@
     "step3Desc": "Experience restaurant-quality premium burgers made by your own hands at home"
   },
   "features": {
-    "freshMeat": "🥩 Fresh Beef",
-    "realCheese": "🧀 Real Cheese",
-    "freshBread": "🍞 Daily Fresh Bun",
-    "coldDelivery": "❄️ Chilled Delivery",
-    "readyTen": "⚡ Ready in 10 Mins"
+    "freshMeat": "Fresh Beef",
+    "realCheese": "Real Cheese",
+    "freshBread": "Daily Fresh Bun",
+    "coldDelivery": "Chilled Delivery",
+    "readyTen": "Ready in 10 Mins"
   },
   "products": {
     "title": "Choose Your Box",
@@ -35,12 +35,74 @@
     "categoryBoxes": "Boxes",
     "categoryAppetizers": "Appetizers",
     "categoryAddons": "Add-ons",
-    "ingredients": "📋 Ingredients:",
-    "prepSteps": "🍳 Preparation steps:",
+    "ingredients": "Ingredients:",
+    "prepSteps": "Preparation steps:",
     "currency": "EGP",
     "addToCart": "Add to Cart",
-    "onSale": "🔥 Discount",
-    "noProducts": "No burger boxes available right now"
+    "onSale": "Discount",
+    "noProducts": "No burger boxes available right now",
+    "recommendations": "You might also like",
+    "boxDetails": {
+      "serves": "Serves:",
+      "contents": "Contents:"
+    },
+    "box_1": {
+      "name": "BURGO Family Box",
+      "tagline": "The complete family experience for home burger pros.",
+      "serves": "Serves up to 6 people",
+      "ingredients": [
+        "6 premium Angus beef patties stuffed with American cheddar cheese, 150g each (total 900g pure Angus)",
+        "6 fresh buffalo buns",
+        "12 sauces chosen by customer",
+        "6 creamy cheddar sauces",
+        "1 classic ketchup bottle (140g)",
+        "1 premium pickles jar (140g)"
+      ],
+      "prepSteps": [
+        "Preheat grill or pan on high heat",
+        "Grill patties for 4-5 minutes per side (do not press down to keep cheddar inside)",
+        "Lightly toast buffalo buns with butter",
+        "Distribute pickles and your favorite sauces and assemble sandwiches"
+      ]
+    },
+    "box_2": {
+      "name": "BURGO 4x4 Box",
+      "tagline": "The perfect size for small groups and get-togethers done right.",
+      "serves": "Serves up to 4 people",
+      "ingredients": [
+        "4 premium Angus beef patties stuffed with American cheddar cheese, 150g each (total 600g pure Angus)",
+        "4 fresh buffalo buns",
+        "8 sauces chosen by customer",
+        "4 creamy cheddar sauces",
+        "1 classic ketchup bottle (140g)",
+        "1 premium pickles jar (140g)"
+      ],
+      "prepSteps": [
+        "Preheat grill or pan on high heat",
+        "Grill patties for 4-5 minutes per side (do not press down to keep cheddar inside)",
+        "Lightly toast buffalo buns with butter",
+        "Distribute pickles and your favorite sauces and assemble sandwiches"
+      ]
+    },
+    "box_3": {
+      "name": "BURGO Du Box",
+      "tagline": "The ideal choice for two people or late-night cravings needing power and pampering.",
+      "serves": "Serves 2 people",
+      "ingredients": [
+        "2 premium Angus beef patties stuffed with American cheddar cheese, 150g each (total 300g pure Angus)",
+        "2 fresh buffalo buns",
+        "4 sauces chosen by customer",
+        "2 creamy cheddar sauces",
+        "1 classic ketchup bottle (140g)",
+        "1 premium pickles jar (140g)"
+      ],
+      "prepSteps": [
+        "Preheat grill or pan on high heat",
+        "Grill patties for 4-5 minutes per side (do not press down to keep cheddar inside)",
+        "Lightly toast buffalo buns with butter",
+        "Distribute pickles and your favorite sauces and assemble sandwiches"
+      ]
+    }
   },
   "cart": {
     "title": "Shopping Cart",
@@ -63,9 +125,9 @@
     "notes": "Delivery Notes (optional)",
     "notesPlaceholder": "Any special instructions for delivery driver",
     "paymentMethod": "Payment Method",
-    "payCard": "💳 Bank Card (Visa/MC/Meeza)",
-    "payWallet": "📱 Mobile Wallet (Vodafone Cash)",
-    "payCod": "💵 Cash on Delivery (COD)",
+    "payCard": "Bank Card (Visa/MC/Meeza)",
+    "payWallet": "Mobile Wallet (Vodafone Cash)",
+    "payCod": "Cash on Delivery (COD)",
     "btnPayNow": "Pay Now",
     "btnSubmitCod": "Confirm Order",
     "validation": {
@@ -77,15 +139,21 @@
     }
   },
   "success": {
-    "title": "Order Received Successfully! 🎉",
-    "message": "Thank you for trusting Burger Box. Your order has been registered, reviewed, and is being prepared for delivery.",
+    "title": "Order Received Successfully!",
+    "message": "Thank you for trusting Burgo. Your order has been registered, reviewed, and is being prepared for delivery.",
     "orderNumber": "Your Order Number:",
     "btnHome": "Back to Home",
-    "paymentSuccess": "Payment Successful!"
+    "paymentSuccess": "Payment Successful!",
+    "steps": {
+      "pending": "Order Placed",
+      "preparing": "Preparing",
+      "shipping": "Shipping",
+      "delivered": "Delivered"
+    }
   },
   "admin": {
     "login": {
-      "title": "Burger Box Control Panel",
+      "title": "Burgo Control Panel",
       "subtitle": "Sign in to manage products, orders, and reports",
       "username": "Username",
       "password": "Password",
@@ -118,6 +186,7 @@
         "category": "Category",
         "badge": "Badge",
         "discount": "Discount",
+        "visibility": "Visible",
         "actions": "Actions"
       },
       "form": {
@@ -175,7 +244,14 @@
         "created": "Order Date:",
         "statusUpdated": "Status updated successfully to"
       },
-      "newOrderToast": "🔔 New order placed! Order #"
+      "newOrderToast": "New order placed! Order #"
     }
+  },
+  "contactPage": {
+    "title": "Get In Touch",
+    "subtitle": "Questions about your box or order? Contact our support team directly on WhatsApp.",
+    "ctaBtn": "Chat via WhatsApp",
+    "phone": "+20 122 154 2589",
+    "hours": "Daily: 12 PM - 12 AM"
   }
 }

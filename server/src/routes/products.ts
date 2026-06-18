@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 // POST a new product (Protected)
 router.post('/', authenticateJWT, (req, res) => {
   const db = readDB();
-  const { name, description, price, badge, image, category, ingredients, prepSteps, discount } = req.body;
+  const { name, description, price, badge, image, category, ingredients, prepSteps, discount, active } = req.body;
 
   if (!name || !price) {
     return res.status(400).json({ error: 'الاسم والسعر مطلوبان' });
@@ -31,6 +31,7 @@ router.post('/', authenticateJWT, (req, res) => {
     category: category || 'classic',
     ingredients: Array.isArray(ingredients) ? ingredients : [],
     prepSteps: Array.isArray(prepSteps) ? prepSteps : [],
+    active: active !== undefined ? Boolean(active) : true,
     discount: discount || null
   };
 
@@ -50,7 +51,7 @@ router.put('/:id', authenticateJWT, (req, res) => {
     return res.status(404).json({ error: 'المنتج غير موجود' });
   }
 
-  const { name, description, price, badge, image, category, ingredients, prepSteps, discount } = req.body;
+  const { name, description, price, badge, image, category, ingredients, prepSteps, discount, active } = req.body;
 
   const updatedProduct = {
     ...db.products[index],
@@ -62,7 +63,8 @@ router.put('/:id', authenticateJWT, (req, res) => {
     category: category !== undefined ? category : db.products[index].category,
     ingredients: ingredients !== undefined ? (Array.isArray(ingredients) ? ingredients : []) : db.products[index].ingredients,
     prepSteps: prepSteps !== undefined ? (Array.isArray(prepSteps) ? prepSteps : []) : db.products[index].prepSteps,
-    discount: discount !== undefined ? discount : db.products[index].discount
+    discount: discount !== undefined ? discount : db.products[index].discount,
+    active: active !== undefined ? Boolean(active) : db.products[index].active
   };
 
   db.products[index] = updatedProduct;

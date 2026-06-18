@@ -89,7 +89,7 @@ router.post('/paymob-checkout', async (req, res) => {
           last_name: lastName,
           state: customerInfo.governorate,
           first_name: firstName,
-          email: 'customer@burgerbox.com',
+          email: 'customer@burgo.com',
           phone_number: customerInfo.phone
         },
         currency: 'EGP',

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 220" width="100%" height="100%">
+  <defs>
+    <!-- Tomato gradients -->
+    <radialGradient id="tomatoGrad1" cx="45%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#EF4444" /> <!-- Bright red -->
+      <stop offset="70%" stop-color="#DC2626" /> <!-- Standard red -->
+      <stop offset="100%" stop-color="#991B1B" /> <!-- Dark skin red -->
+    </radialGradient>
+    <radialGradient id="tomatoGrad2" cx="55%" cy="40%" r="55%">
+      <stop offset="0%" stop-color="#F87171" /> <!-- Slightly lighter red highlight -->
+      <stop offset="60%" stop-color="#DC2626" />
+      <stop offset="100%" stop-color="#7F1D1D" /> <!-- Darkest rim -->
+    </radialGradient>
+    <!-- Jelly seed pocket gradient -->
+    <radialGradient id="seedJelly" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FACC15" /> <!-- Yellowish seeds -->
+      <stop offset="50%" stop-color="#84CC16" stop-opacity="0.9" /> <!-- Greenish jelly -->
+      <stop offset="100%" stop-color="#DC2626" stop-opacity="0" />
+    </radialGradient>
+    <!-- Drop shadow -->
+    <filter id="tomatoShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="5" stdDeviation="4" flood-color="#7f1d1d" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Tomato Slice Left (background slice) -->
+  <g filter="url(#tomatoShadow)" transform="translate(40, 0)">
+    <!-- Main Slice Outer Body -->
+    <ellipse cx="160" cy="110" rx="140" ry="85" fill="url(#tomatoGrad1)" />
+    <!-- Inner Flesh Border -->
+    <ellipse cx="160" cy="110" rx="125" ry="73" fill="#B91C1C" />
+    
+    <!-- Locules (Seed Pockets) -->
+    <!-- Pocket 1 -->
+    <path d="M 160 110 Q 120 70, 80 90 Q 100 115, 160 110 Z" fill="url(#seedJelly)" />
+    <circle cx="110" cy="95" r="4" fill="#FEF08A" />
+    <circle cx="125" cy="92" r="3.5" fill="#FEF08A" />
+    <circle cx="100" cy="100" r="3.5" fill="#FEF08A" />
+
+    <!-- Pocket 2 -->
+    <path d="M 160 110 Q 200 70, 240 90 Q 220 115, 160 110 Z" fill="url(#seedJelly)" />
+    <circle cx="210" cy="95" r="4" fill="#FEF08A" />
+    <circle cx="195" cy="92" r="3.5" fill="#FEF08A" />
+    <circle cx="220" cy="100" r="3.5" fill="#FEF08A" />
+
+    <!-- Pocket 3 -->
+    <path d="M 160 110 Q 200 150, 230 130 Q 200 120, 160 110 Z" fill="url(#seedJelly)" />
+    <circle cx="200" cy="128" r="4" fill="#FEF08A" />
+    <circle cx="185" cy="122" r="3.5" fill="#FEF08A" />
+
+    <!-- Pocket 4 -->
+    <path d="M 160 110 Q 120 150, 90 130 Q 120 120, 160 110 Z" fill="url(#seedJelly)" />
+    <circle cx="120" cy="128" r="4" fill="#FEF08A" />
+    <circle cx="135" cy="122" r="3.5" fill="#FEF08A" />
+
+    <!-- Core Details -->
+    <ellipse cx="160" cy="110" rx="22" ry="15" fill="#EF4444" opacity="0.9" />
+
+    <!-- Shiny highlights -->
+    <path d="M 60 95 C 75 75, 120 60, 150 60" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.45" />
+    <ellipse cx="160" cy="110" rx="10" ry="6" fill="#FFFFFF" opacity="0.3" />
+  </g>
+
+  <!-- Tomato Slice Right (foreground slice, overlapping slightly) -->
+  <g filter="url(#tomatoShadow)" transform="translate(100, 20)">
+    <!-- Main Slice Outer Body -->
+    <ellipse cx="200" cy="100" rx="140" ry="85" fill="url(#tomatoGrad2)" />
+    <!-- Inner Flesh Border -->
+    <ellipse cx="200" cy="100" rx="125" ry="73" fill="#B91C1C" />
+    
+    <!-- Locules (Seed Pockets) -->
+    <!-- Pocket 1 -->
+    <path d="M 200 100 Q 160 60, 120 80 Q 140 105, 200 100 Z" fill="url(#seedJelly)" />
+    <circle cx="150" cy="85" r="4" fill="#FEF08A" />
+    <circle cx="165" cy="82" r="3.5" fill="#FEF08A" />
+    <circle cx="140" cy="90" r="3.5" fill="#FEF08A" />
+
+    <!-- Pocket 2 -->
+    <path d="M 200 100 Q 240 60, 280 80 Q 260 105, 200 100 Z" fill="url(#seedJelly)" />
+    <circle cx="250" cy="85" r="4" fill="#FEF08A" />
+    <circle cx="235" cy="82" r="3.5" fill="#FEF08A" />
+    <circle cx="260" cy="90" r="3.5" fill="#FEF08A" />
+
+    <!-- Pocket 3 -->
+    <path d="M 200 100 Q 240 140, 270 120 Q 240 110, 200 100 Z" fill="url(#seedJelly)" />
+    <circle cx="240" cy="118" r="4" fill="#FEF08A" />
+    <circle cx="225" cy="112" r="3.5" fill="#FEF08A" />
+
+    <!-- Pocket 4 -->
+    <path d="M 200 100 Q 160 140, 130 120 Q 160 110, 200 100 Z" fill="url(#seedJelly)" />
+    <circle cx="160" cy="118" r="4" fill="#FEF08A" />
+    <circle cx="175" cy="112" r="3.5" fill="#FEF08A" />
+
+    <!-- Core Details -->
+    <ellipse cx="200" cy="100" rx="22" ry="15" fill="#EF4444" opacity="0.9" />
+
+    <!-- Shiny highlights -->
+    <path d="M 100 85 C 115 65, 160 50, 190 50" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" opacity="0.5" />
+    <path d="M 230 50 C 270 50, 310 65, 320 80" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="round" opacity="0.4" />
+    <ellipse cx="200" cy="100" rx="10" ry="6" fill="#FFFFFF" opacity="0.35" />
+  </g>
+</svg>

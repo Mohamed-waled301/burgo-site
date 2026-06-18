@@ -11,6 +11,7 @@ export interface Product {
   category: string;
   ingredients: string[];
   prepSteps: string[];
+  active?: boolean;
   discount?: {
     type: 'percent' | 'fixed';
     value: number;
@@ -60,7 +61,7 @@ const defaultProducts: Product[] = [
     badge: null,
     image: "🍔",
     category: "classic",
-    ingredients: ["لحمة بقر 180g", "جبن أمريكي", "خس", "طماطم", "بصل مكرمل", "صوص Burger Box الخاص"],
+    ingredients: ["لحمة بقر 180g", "جبن أمريكي", "خس", "طماطم", "بصل مكرمل", "صوص Burgo الخاص"],
     prepSteps: ["سخن المقلاة على نار عالية", "حط اللحمة واسحقها بالمقلاة 3 دقايق", "اقلبها وحط الجبن فوقها", "ركّب السندوتش وبالهنا"]
   },
   {
@@ -93,7 +94,7 @@ const defaultProducts: Product[] = [
     badge: "🔥 الأكثر مبيعاً",
     image: "💪",
     category: "classic",
-    ingredients: ["لحمتين بقر 150g", "جبن شيدر مزدوج", "بيض مقلي", "بيكون", "صوص Burger Box Supreme"],
+    ingredients: ["لحمتين بقر 150g", "جبن شيدر مزدوج", "بيض مقلي", "بيكون", "صوص Burgo Supreme"],
     prepSteps: ["اعمل الخطوات نفس Classic Smash", "أضف البيض المقلي فوق الجبن", "ركّب الطبقتين"]
   },
   {

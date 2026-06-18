@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 200" width="100%" height="100%">
+  <defs>
+    <!-- Bottom Bun gradient -->
+    <radialGradient id="bottomBunGrad" cx="50%" cy="15%" r="75%" fx="45%" fy="10%">
+      <stop offset="0%" stop-color="#FDE047" /> <!-- Toasted top highlight -->
+      <stop offset="35%" stop-color="#EAB308" />
+      <stop offset="70%" stop-color="#CA8A04" />
+      <stop offset="100%" stop-color="#713F12" /> <!-- Deep crust brown -->
+    </radialGradient>
+    <!-- Drop shadow -->
+    <filter id="bottomShadow" x="-15%" y="-15%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="6" stdDeviation="5" flood-color="#451a03" flood-opacity="0.7"/>
+    </filter>
+  </defs>
+
+  <!-- Bottom Bun Shape (flatter, with slightly rounded corners and a toasted top face) -->
+  <path d="M 45 60 
+           C 45 40, 455 40, 455 60 
+           C 455 120, 425 170, 395 180 
+           C 365 190, 135 190, 105 180 
+           C 75 170, 45 120, 45 60 Z" 
+        fill="url(#bottomBunGrad)" 
+        filter="url(#bottomShadow)" />
+
+  <!-- Toasted inner face highlight (the cut surface of the bun) -->
+  <ellipse cx="250" cy="60" rx="205" ry="20" fill="#FEF3C7" opacity="0.3" />
+  
+  <!-- Toasted rim shading -->
+  <path d="M 45 60 C 90 75, 410 75, 455 60 C 445 70, 55 70, 45 60 Z" fill="#713F12" opacity="0.3" />
+  
+  <!-- Bottom shadow rim for extra volume -->
+  <path d="M 105 180 C 135 190, 365 190, 395 180 C 375 188, 125 188, 105 180 Z" fill="#451a03" opacity="0.45" />
+</svg>

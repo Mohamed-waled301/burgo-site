@@ -1,5 +1,6 @@
-import React from 'react';
-import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../store/useAuthStore';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
@@ -8,6 +9,7 @@ import { CartDrawer } from '../components/CartDrawer';
 // Lazy loading/direct imports of page views
 import { Home } from '../pages/Home';
 import { Products } from '../pages/Products';
+import { Contact } from '../pages/Contact';
 import { Checkout } from '../pages/Checkout';
 import { PaymentSimulator } from '../pages/PaymentSimulator';
 import { OrderSuccess } from '../pages/OrderSuccess';
@@ -20,11 +22,27 @@ import { Analytics as AdminAnalytics } from '../pages/admin/Analytics';
 
 // Router Wrapper for Public Pages
 const PublicLayout: React.FC = () => {
+  const location = useLocation();
+  const { i18n } = useTranslation();
+  const isRTL = i18n.language === 'ar';
+  const hasReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
   return (
-    <div className="min-h-screen flex flex-col bg-cream">
+    <div className="min-h-screen flex flex-col bg-background text-charcoal transition-colors duration-300" dir={isRTL ? 'rtl' : 'ltr'}>
       <Navbar />
-      <main className="flex-1 flex flex-col">
-        <Outlet />
+      <main className="flex-1 flex flex-col relative">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={location.pathname}
+            initial={hasReducedMotion ? { opacity: 1 } : { opacity: 0, y: 12 }}
+            animate={hasReducedMotion ? { opacity: 1 } : { opacity: 1, y: 0 }}
+            exit={hasReducedMotion ? { opacity: 1 } : { opacity: 0, y: -12 }}
+            transition={{ duration: 0.25, ease: [0.25, 1, 0.5, 1] }}
+            className="flex-1 flex flex-col w-full"
+          >
+            <Outlet />
+          </motion.div>
+        </AnimatePresence>
       </main>
       <CartDrawer />
       <Footer />
@@ -45,6 +63,7 @@ export const AppRoutes: React.FC = () => {
       <Route element={<PublicLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/checkout/payment-simulator" element={<PaymentSimulator />} />
         <Route path="/checkout/success" element={<OrderSuccess />} />

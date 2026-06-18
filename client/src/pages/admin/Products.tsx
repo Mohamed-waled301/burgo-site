@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Plus, Edit2, Trash2, Tag, X, Sparkles } from 'lucide-react';
+import { Plus, Edit2, Trash2, Tag, X, Sparkles, Utensils } from 'lucide-react';
 import { toast } from 'sonner';
 import { useProductStore, Product } from '../../store/useProductStore';
 
@@ -19,7 +19,7 @@ export const Products: React.FC = () => {
   const [formPrice, setFormPrice] = useState('');
   const [formDescription, setFormDescription] = useState('');
   const [formCategory, setFormCategory] = useState('classic');
-  const [formImage, setFormImage] = useState('🍔');
+  const [formImage, setFormImage] = useState('/ref/IMG-20260615-WA0025.jpg');
   const [formBadge, setFormBadge] = useState('');
   const [formIngredients, setFormIngredients] = useState('');
   const [formPrepSteps, setFormPrepSteps] = useState('');
@@ -38,7 +38,7 @@ export const Products: React.FC = () => {
     setFormPrice('');
     setFormDescription('');
     setFormCategory('classic');
-    setFormImage('🍔');
+    setFormImage('/ref/IMG-20260615-WA0025.jpg');
     setFormBadge('');
     setFormIngredients('');
     setFormPrepSteps('');
@@ -193,7 +193,7 @@ export const Products: React.FC = () => {
         </div>
       ) : products.length === 0 ? (
         <div className="text-center py-20 bg-gray-950 rounded-2xl border border-gray-850">
-          <span className="text-5xl block mb-4">🍽️</span>
+          <Utensils className="h-12 w-12 text-gray-600 mx-auto mb-4 animate-pulse" />
           <p className="text-gray-500 font-semibold">{t('products.noProducts')}</p>
         </div>
       ) : (
@@ -207,6 +207,7 @@ export const Products: React.FC = () => {
                 <th className="px-6 py-4 text-start text-xs font-bold text-gray-400 uppercase tracking-wider">{t('admin.products.table.category')}</th>
                 <th className="px-6 py-4 text-start text-xs font-bold text-gray-400 uppercase tracking-wider">{t('admin.products.table.badge')}</th>
                 <th className="px-6 py-4 text-start text-xs font-bold text-gray-400 uppercase tracking-wider">{t('admin.products.table.discount')}</th>
+                <th className="px-6 py-4 text-start text-xs font-bold text-gray-400 uppercase tracking-wider">{t('admin.products.table.visibility')}</th>
                 <th className="px-6 py-4 text-start text-xs font-bold text-gray-400 uppercase tracking-wider">{t('admin.products.table.actions')}</th>
               </tr>
             </thead>
@@ -214,7 +215,11 @@ export const Products: React.FC = () => {
               {products.map((product) => (
                 <tr key={product.id} className="hover:bg-gray-900/20 transition">
                   <td className="px-6 py-3 whitespace-nowrap">
-                    <span className="text-3xl filter drop-shadow-sm select-none">{product.image}</span>
+                    {product.image.startsWith('/') || product.image.startsWith('http') ? (
+                      <img src={product.image} alt={product.name} className="h-10 w-10 object-cover rounded-lg border border-gray-800" />
+                    ) : (
+                      <span className="text-3xl filter drop-shadow-sm select-none">{product.image}</span>
+                    )}
                   </td>
                   <td className="px-6 py-3 whitespace-nowrap font-bold text-white">{product.name}</td>
                   <td className="px-6 py-3 whitespace-nowrap font-price text-gray-300 font-semibold">
@@ -243,6 +248,39 @@ export const Products: React.FC = () => {
                     ) : (
                       <span className="text-gray-600">{t('admin.products.noDiscount')}</span>
                     )}
+                  </td>
+                  <td className="px-6 py-3 whitespace-nowrap">
+                    <div className="flex items-center" dir="ltr">
+                      <button
+                        onClick={async () => {
+                          try {
+                            await updateProduct(product.id, {
+                              active: product.active === false ? true : false,
+                            });
+                            toast.success(
+                              t('language') === 'en'
+                                ? 'Status updated successfully'
+                                : 'تم تحديث حالة المنتج بنجاح'
+                            );
+                          } catch (err) {
+                            toast.error(
+                              t('language') === 'en'
+                                ? 'Failed to update status'
+                                : 'فشل تحديث حالة المنتج'
+                            );
+                          }
+                        }}
+                        className={`relative inline-flex h-6 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none ${
+                          product.active !== false ? 'bg-primary' : 'bg-gray-800'
+                        }`}
+                      >
+                        <span
+                          className={`pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out ${
+                            product.active !== false ? 'translate-x-5' : 'translate-x-0'
+                          }`}
+                        />
+                      </button>
+                    </div>
                   </td>
                   <td className="px-6 py-3 whitespace-nowrap text-gray-400">
                     <div className="flex items-center gap-3">
@@ -368,7 +406,7 @@ export const Products: React.FC = () => {
                     type="text"
                     value={formBadge}
                     onChange={(e) => setFormBadge(e.target.value)}
-                    placeholder="e.g. ⭐ Premium"
+                    placeholder="e.g. Premium"
                     className="w-full rounded-xl border border-gray-800 bg-gray-950 px-3 py-2 text-xs text-white focus:outline-none focus:border-primary"
                   />
                 </div>

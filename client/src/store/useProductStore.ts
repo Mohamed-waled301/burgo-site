@@ -11,6 +11,7 @@ export interface Product {
   category: string;
   ingredients: string[];
   prepSteps: string[];
+  active?: boolean;
   discount?: {
     type: 'percent' | 'fixed';
     value: number;

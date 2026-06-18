@@ -7,8 +7,9 @@ import { useAuthStore } from '../../store/useAuthStore';
 import api from '../../services/api';
 
 export const Login: React.FC = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
+  const isRTL = i18n.language === 'ar';
   
   const login = useAuthStore((state) => state.login);
   
@@ -31,7 +32,7 @@ export const Login: React.FC = () => {
       const { token, username } = response.data;
       login(token, username);
       
-      toast.success(t('language') === 'en' ? 'Welcome back, Admin!' : 'أهلاً بك مجدداً في لوحة التحكم!');
+      toast.success(isRTL ? 'أهلاً بك مجدداً في لوحة التحكم!' : 'Welcome back, Admin!');
       navigate('/admin/dashboard');
     } catch (err: any) {
       console.error('Login error:', err);

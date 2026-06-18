@@ -1,7 +1,7 @@
 {
-  "name": "burger-box-root",
+  "name": "burgo-root",
   "version": "1.0.0",
-  "description": "Burger Box Platform Root Workspace",
+  "description": "Burgo Platform Root Workspace",
   "scripts": {
     "install:all": "npm install --prefix client && npm install --prefix server",
     "dev:client": "npm run dev --prefix client",

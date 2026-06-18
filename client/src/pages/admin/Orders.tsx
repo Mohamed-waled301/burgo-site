@@ -214,7 +214,13 @@ export const Orders: React.FC = () => {
                   {selectedOrder.items.map((item, i) => (
                     <div key={i} className="flex justify-between items-center py-2 text-xs">
                       <div className="flex items-center gap-3">
-                        <span className="text-2xl shrink-0 select-none">{item.image}</span>
+                        <div className="h-10 w-10 rounded-lg bg-gray-950 flex items-center justify-center border border-gray-850 text-xl shrink-0 overflow-hidden select-none">
+                          {item.image.startsWith('/') || item.image.startsWith('http') ? (
+                            <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                          ) : (
+                            item.image
+                          )}
+                        </div>
                         <div>
                           <span className="text-white font-bold block leading-snug">{item.name}</span>
                           <span className="text-gray-500 block font-price mt-0.5">{item.quantity} × {item.price} {t('products.currency')}</span>

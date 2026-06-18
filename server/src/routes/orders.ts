@@ -26,6 +26,16 @@ router.post('/clear-flag', authenticateJWT, (req, res) => {
   res.json({ success: true });
 });
 
+// GET single order by ID (Public)
+router.get('/:id', (req, res) => {
+  const db = readDB();
+  const order = db.orders.find(o => o.id === req.params.id);
+  if (!order) {
+    return res.status(404).json({ error: 'الطلب غير موجود' });
+  }
+  res.json(order);
+});
+
 // POST a new order (Public)
 router.post('/', (req, res) => {
   const db = readDB();
