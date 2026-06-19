@@ -222,7 +222,7 @@
       "description": "صوص باربكيو مدخن غني ولذيذ مثالي للتغميس وإضافة نكهة الشواء.",
       "price": 7.5,
       "badge": "Smoky",
-      "image": "/ref/IMG-20260615-WA0027.jpg",
+      "image": "/ref/bbq-sauce.png",
       "category": "addons",
       "ingredients": [
         "Smoky BBQ sauce recipe"
@@ -238,7 +238,7 @@
       "description": "صوص رانش كريمي غني بنكهة الثوم والأعشاب اللذيذة.",
       "price": 12,
       "badge": "Creamy",
-      "image": "/ref/IMG-20260615-WA0027.jpg",
+      "image": "/ref/ranch-sauce.png",
       "category": "addons",
       "ingredients": [
         "Creamy herb ranch dressing"
