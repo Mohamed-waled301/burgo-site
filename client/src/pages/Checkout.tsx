@@ -4,7 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { CreditCard, Wallet, CircleDollarSign, AlertCircle } from 'lucide-react';
+import { CreditCard, Wallet, CircleDollarSign, AlertCircle, Home } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useCartStore } from '../store/useCartStore';
 import { useOrderStore } from '../store/useOrderStore';
 import { useCustomerAuthStore } from '../store/useCustomerAuthStore';
@@ -12,17 +13,11 @@ import { useAuthModalStore } from '../store/useAuthModalStore';
 import api from '../services/api';
 
 const GOVERNORATES_AR = [
-  'القاهرة', 'الجيزة', 'الإسكندرية', 'القليوبية', 'الدقهلية', 
-  'الشرقية', 'الغربية', 'المنوفية', 'البحيرة', 'دمياط', 
-  'بورسعيد', 'السويس', 'الإسماعيلية', 'الفيوم', 'بني سويف', 
-  'المنيا', 'أسيوط', 'سوهاج', 'قنا', 'الأقصر', 'أسوان'
+  'الإسكندرية'
 ];
 
 const GOVERNORATES_EN = [
-  'Cairo', 'Giza', 'Alexandria', 'Qalyubia', 'Dakahlia', 
-  'Sharqia', 'Gharbia', 'Monufia', 'Beheira', 'Damietta', 
-  'Port Said', 'Suez', 'Ismailia', 'Fayoum', 'Beni Suef', 
-  'Minya', 'Asyut', 'Sohag', 'Qena', 'Luxor', 'Aswan'
+  'Alexandria'
 ];
 
 export const Checkout: React.FC = () => {
@@ -53,10 +48,19 @@ export const Checkout: React.FC = () => {
     phone: z.string()
       .min(1, { message: t('checkout.validation.phoneRequired') })
       .regex(/^01[0125][0-9]{8}$/, { message: t('checkout.validation.phoneFormat') }),
-    address: z.string().min(5, { message: t('checkout.validation.addressRequired') }),
+    useDifferentAddress: z.boolean().default(false),
+    address: z.string().optional(),
     governorate: z.string().min(1, { message: t('checkout.validation.governorateRequired') }),
     notes: z.string().optional(),
     paymentMethod: z.enum(['card', 'wallet', 'cod']),
+  }).refine((data) => {
+    if (data.useDifferentAddress || !user?.address) {
+      return !!data.address && data.address.trim().length >= 5;
+    }
+    return true;
+  }, {
+    message: t('checkout.validation.addressRequired'),
+    path: ['address'],
   });
 
   type FormData = z.infer<typeof schema>;
@@ -73,14 +77,16 @@ export const Checkout: React.FC = () => {
       // Pre-fill from saved user profile
       customerName: user?.fullName || '',
       phone: user?.phoneNumber || '',
-      address: user?.address || '',
-      governorate: '',
+      useDifferentAddress: !user?.address,
+      address: '',
+      governorate: isRTL ? 'الإسكندرية' : 'Alexandria',
       notes: '',
       paymentMethod: 'cod',
     }
   });
 
   const selectedPayment = watch('paymentMethod');
+  const useDifferentAddress = watch('useDifferentAddress');
   const governorateList = isRTL ? GOVERNORATES_AR : GOVERNORATES_EN;
 
   const onSubmit = async (data: FormData) => {
@@ -88,13 +94,15 @@ export const Checkout: React.FC = () => {
     setIsSubmitting(true);
     setCheckoutError(null);
 
+    const finalAddress = data.useDifferentAddress ? (data.address || '') : (user?.address || '');
+
     try {
       // 1. If COD, create order directly on backend and redirect
       if (data.paymentMethod === 'cod') {
         const orderData = {
           customerName: data.customerName,
           phone: data.phone,
-          address: data.address,
+          address: finalAddress,
           governorate: data.governorate,
           notes: data.notes || '',
           paymentMethod: 'cod' as const,
@@ -118,7 +126,56 @@ export const Checkout: React.FC = () => {
         } catch (e) {
           console.error('Failed to save order ID to local storage', e);
         }
+
+        // WhatsApp click-to-chat redirection
+        const whatsappNumber = '201284838592';
+        let message = '';
+        if (isRTL) {
+          message = `🍔 *طلب جديد من بورجو (Burgo)* 🍔\n` +
+            `------------------------------------\n` +
+            `*رقم الطلب:* #${res.id}\n` +
+            `*العميل:* ${data.customerName}\n` +
+            `*رقم الهاتف:* ${data.phone}\n` +
+            `*المحافظة:* ${data.governorate}\n` +
+            `*العنوان:* ${finalAddress}\n` +
+            (data.notes ? `*ملاحظات:* ${data.notes}\n` : '') +
+            `------------------------------------\n` +
+            `*الطلبات:*\n` +
+            items.map(item => `- ${item.name} × ${item.quantity} (${item.price} ج.م)`).join('\n') + '\n' +
+            `------------------------------------\n` +
+            `*طريقة الدفع:* الدفع عند الاستلام (COD)\n` +
+            `*الإجمالي الكلي:* ${res.total} ج.م\n` +
+            `------------------------------------\n` +
+            `شكراً لاختيارك بورجو! 🍟🥤`;
+        } else {
+          message = `🍔 *New Order from Burgo* 🍔\n` +
+            `------------------------------------\n` +
+            `*Order ID:* #${res.id}\n` +
+            `*Customer Name:* ${data.customerName}\n` +
+            `*Phone Number:* ${data.phone}\n` +
+            `*Governorate:* ${data.governorate}\n` +
+            `*Delivery Address:* ${finalAddress}\n` +
+            (data.notes ? `*Notes:* ${data.notes}\n` : '') +
+            `------------------------------------\n` +
+            `*Items:*\n` +
+            items.map(item => `- ${item.name} x ${item.quantity} (${item.price} EGP)`).join('\n') + '\n' +
+            `------------------------------------\n` +
+            `*Payment Method:* Cash on Delivery (COD)\n` +
+            `*Grand Total:* ${res.total} EGP\n` +
+            `------------------------------------\n` +
+            `Thank you for choosing Burgo! 🍟🥤`;
+        }
+
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+        
         clearCart();
+        
+        try {
+          window.open(whatsappUrl, '_blank');
+        } catch (e) {
+          console.error('Failed to open WhatsApp window', e);
+        }
+
         navigate(`/checkout/success?order_id=${res.id}`);
       } else {
         // 2. If card or wallet, initiate Paymob gateway via backend
@@ -126,7 +183,7 @@ export const Checkout: React.FC = () => {
         const orderPlaceholderData = {
           customerName: data.customerName,
           phone: data.phone,
-          address: data.address,
+          address: finalAddress,
           governorate: data.governorate,
           notes: data.notes || '',
           paymentMethod: data.paymentMethod,
@@ -159,7 +216,7 @@ export const Checkout: React.FC = () => {
           customerInfo: {
             name: data.customerName,
             phone: data.phone,
-            address: data.address,
+            address: finalAddress,
             governorate: data.governorate
           }
         });
@@ -297,25 +354,76 @@ export const Checkout: React.FC = () => {
               </div>
             </div>
 
-            {/* Address Input */}
-            <div>
-              <label htmlFor="address" className="block text-xs font-bold text-text-muted mb-1.5 uppercase tracking-wide">
-                {t('checkout.address')}
-              </label>
-              <input
-                id="address"
-                type="text"
-                placeholder={t('checkout.addressPlaceholder')}
-                {...register('address')}
-                className={`w-full rounded-xl border px-4 py-3 text-sm transition duration-200 bg-background text-charcoal focus:bg-surface focus:outline-none focus:ring-2 ${
-                  errors.address 
-                    ? 'border-red-500/50 focus:ring-red-500/20' 
-                    : 'border-border/60 focus:border-primary focus:ring-primary/20'
-                }`}
-              />
-              {errors.address && (
-                <p className="mt-1.5 text-xs text-red-500 font-bold">{errors.address.message}</p>
+            {/* Address Section */}
+            <div className="space-y-4">
+              {/* Checkbox for Different Address */}
+              {user?.address && (
+                <div className="flex items-center gap-3 p-4 bg-background/50 rounded-2xl border border-border/30 hover:border-border transition duration-200">
+                  <input
+                    type="checkbox"
+                    id="useDifferentAddress"
+                    {...register('useDifferentAddress')}
+                    className="w-5 h-5 text-primary border-border/60 rounded focus:ring-primary/20 bg-background cursor-pointer accent-primary"
+                  />
+                  <label htmlFor="useDifferentAddress" className="text-sm font-black text-charcoal cursor-pointer select-none">
+                    {isRTL ? 'الشحن إلى عنوان مختلف؟' : 'Ship to a different address?'}
+                  </label>
+                </div>
               )}
+
+              {/* Saved Address Display Card */}
+              {!useDifferentAddress && user?.address && (
+                <div className="p-4 bg-primary/5 border border-primary/20 rounded-2xl flex items-start gap-3.5">
+                  <div className="p-2.5 bg-primary/10 rounded-xl text-primary shrink-0">
+                    <Home className="h-5 w-5" />
+                  </div>
+                  <div>
+                    <h4 className="text-xs font-bold text-primary uppercase tracking-wide">
+                      {isRTL ? 'العنوان المحفوظ' : 'Saved Delivery Address'}
+                    </h4>
+                    <p className="mt-1.5 text-sm font-bold text-charcoal select-text">
+                      {user.address}
+                    </p>
+                    <p className="mt-1 text-[10px] text-text-muted/80">
+                      {isRTL ? 'سيتم التوصيل إلى عنوانك المسجل في الملف الشخصي.' : 'Your order will be shipped to your registered profile address.'}
+                    </p>
+                  </div>
+                </div>
+              )}
+
+              {/* Custom Address Input (Animated with AnimatePresence) */}
+              <AnimatePresence mode="wait">
+                {(useDifferentAddress || !user?.address) && (
+                  <motion.div
+                    key="different-address-input"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="space-y-4 overflow-hidden"
+                  >
+                    <div>
+                      <label htmlFor="address" className="block text-xs font-bold text-text-muted mb-1.5 uppercase tracking-wide">
+                        {t('checkout.address')}
+                      </label>
+                      <input
+                        id="address"
+                        type="text"
+                        placeholder={t('checkout.addressPlaceholder')}
+                        {...register('address')}
+                        className={`w-full rounded-xl border px-4 py-3 text-sm transition duration-200 bg-background text-charcoal focus:bg-surface focus:outline-none focus:ring-2 ${
+                          errors.address 
+                            ? 'border-red-500/50 focus:ring-red-500/20' 
+                            : 'border-border/60 focus:border-primary focus:ring-primary/20'
+                        }`}
+                      />
+                      {errors.address && (
+                        <p className="mt-1.5 text-xs text-red-500 font-bold">{errors.address.message}</p>
+                      )}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
 
             {/* Notes input */}

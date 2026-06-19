@@ -15,6 +15,52 @@ export const OrderSuccess: React.FC = () => {
   const [order, setOrder] = useState<any>(null);
   const [loading, setLoading] = useState(true);
 
+  const handleSendWhatsApp = (ord: any) => {
+    if (!ord) return;
+    const whatsappNumber = '201284838592';
+    const computedTotal = ord.total || 0;
+    
+    let message = '';
+    if (isRTL) {
+      message = `🍔 *طلب جديد من بورجو (Burgo)* 🍔\n` +
+        `------------------------------------\n` +
+        `*رقم الطلب:* #${ord.id}\n` +
+        `*العميل:* ${ord.customerName}\n` +
+        `*رقم الهاتف:* ${ord.phone}\n` +
+        `*المحافظة:* ${ord.governorate}\n` +
+        `*العنوان:* ${ord.address}\n` +
+        (ord.notes ? `*ملاحظات:* ${ord.notes}\n` : '') +
+        `------------------------------------\n` +
+        `*الطلبات:*\n` +
+        ord.items.map((item: any) => `- ${item.name} × ${item.quantity} (${item.price} ج.م)`).join('\n') + '\n' +
+        `------------------------------------\n` +
+        `*طريقة الدفع:* الدفع عند الاستلام (COD)\n` +
+        `*الإجمالي الكلي:* ${computedTotal} ج.م\n` +
+        `------------------------------------\n` +
+        `شكراً لاختيارك بورجو! 🍟🥤`;
+    } else {
+      message = `🍔 *New Order from Burgo* 🍔\n` +
+        `------------------------------------\n` +
+        `*Order ID:* #${ord.id}\n` +
+        `*Customer Name:* ${ord.customerName}\n` +
+        `*Phone Number:* ${ord.phone}\n` +
+        `*Governorate:* ${ord.governorate}\n` +
+        `*Delivery Address:* ${ord.address}\n` +
+        (ord.notes ? `*Notes:* ${ord.notes}\n` : '') +
+        `------------------------------------\n` +
+        `*Items:*\n` +
+        ord.items.map((item: any) => `- ${item.name} x ${item.quantity} (${item.price} EGP)`).join('\n') + '\n' +
+        `------------------------------------\n` +
+        `*Payment Method:* Cash on Delivery (COD)\n` +
+        `*Grand Total:* ${computedTotal} EGP\n` +
+        `------------------------------------\n` +
+        `Thank you for choosing Burgo! 🍟🥤`;
+    }
+    
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    window.open(whatsappUrl, '_blank');
+  };
+
   useEffect(() => {
     if (!orderId || orderId === '00000') {
       setLoading(false);
@@ -296,10 +342,23 @@ export const OrderSuccess: React.FC = () => {
           </div>
         )}
 
+        {/* Send WhatsApp Button for COD */}
+        {order?.paymentMethod === 'cod' && (
+          <button
+            onClick={() => handleSendWhatsApp(order)}
+            className="mt-8 w-full h-13 rounded-xl bg-green-600 hover:bg-green-700 text-white font-black shadow-lg shadow-green-600/25 transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer border-0 flex items-center justify-center gap-2.5 text-sm"
+          >
+            <svg className="h-5 w-5 fill-current shrink-0" viewBox="0 0 24 24">
+              <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946C.06 5.348 5.397.01 12.008.01c3.202.001 6.212 1.246 8.477 3.514 2.266 2.268 3.507 5.28 3.505 8.484-.004 6.657-5.34 11.997-11.953 11.997-2.005-.001-3.973-.502-5.724-1.455L0 24zm6.59-4.846c1.6.95 3.188 1.449 4.825 1.451 5.436 0 9.86-4.37 9.864-9.799.002-2.63-1.023-5.101-2.885-6.965C16.528 1.977 14.07 0 12 0c-4.92 0-8.917 3.97-8.921 8.905-.002 1.956.51 3.864 1.48 5.498l.239.402-.977 3.57 3.659-.958-.335.2zM17.65 14.65c-.307-.154-1.82-.9-2.1-.998-.28-.1-.486-.154-.69.154-.204.307-.79.998-.97 1.202-.178.204-.356.23-.663.076-.307-.154-1.3-.478-2.478-1.527-.917-.818-1.536-1.829-1.716-2.137-.179-.307-.02-.473.134-.627.14-.139.308-.357.46-.537.155-.18.206-.307.309-.513.102-.206.05-.385-.025-.537-.077-.154-.69-1.666-.945-2.28-.248-.598-.501-.518-.69-.527-.178-.008-.382-.01-.587-.01s-.537.077-.817.385c-.28.307-1.071 1.05-1.071 2.56 0 1.512 1.096 2.973 1.25 3.178.154.205 2.158 3.295 5.228 4.618.73.315 1.3.504 1.745.644.733.233 1.402.2 1.93.122.588-.088 1.82-.744 2.077-1.46.256-.718.256-1.333.179-1.46-.076-.128-.28-.204-.588-.358z"/>
+            </svg>
+            {isRTL ? 'تأكيد وإرسال الطلب عبر الواتساب' : 'Confirm & Send Order via WhatsApp'}
+          </button>
+        )}
+
         {/* Return Button */}
         <button
           onClick={() => navigate('/')}
-          className="mt-10 w-full h-13 rounded-xl bg-primary hover:bg-primary-hover text-white font-black shadow-lg shadow-primary/20 transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer border-0 flex items-center justify-center text-sm"
+          className="mt-4 w-full h-13 rounded-xl bg-zinc-900 border border-zinc-800 hover:bg-zinc-850 hover:border-zinc-700 text-zinc-300 font-bold transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer flex items-center justify-center text-sm"
         >
           {t('success.btnHome')}
         </button>
