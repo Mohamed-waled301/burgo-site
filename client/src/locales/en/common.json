@@ -32,17 +32,24 @@
   "products": {
     "title": "Choose Your Box",
     "subtitle": "Every box is ready-to-grill, all ingredients included",
+    "pageTitle": "Our Menu",
+    "pageSubtitle": "Fresh ingredients — boxes, appetizers & add-ons",
     "categoryAll": "All",
     "categoryBoxes": "Boxes",
     "categoryAppetizers": "Appetizers",
     "categoryAddons": "Add-ons",
+    "categoryBoxesDesc": "Ready-to-grill burger boxes with all fresh ingredients",
+    "categoryAppetizersDesc": "The crispiest appetizers crafted with care",
+    "categoryAddonsDesc": "Add your favorite sauces and flavors to your box",
     "ingredients": "Ingredients:",
     "prepSteps": "Preparation steps:",
     "currency": "EGP",
     "addToCart": "Add to Cart",
     "onSale": "Discount",
     "noProducts": "No burger boxes available right now",
-    "recommendations": "You might also like",
+    "recommendations": "You might also like (Recommended)",
+    "boxPrice": "Box Price",
+    "itemsCount": "items",
     "boxDetails": {
       "serves": "Serves:",
       "contents": "Contents:"
@@ -102,6 +109,152 @@
         "Grill patties for 4-5 minutes per side (do not press down to keep cheddar inside)",
         "Lightly toast buffalo buns with butter",
         "Distribute pickles and your favorite sauces and assemble sandwiches"
+      ]
+    },
+    "box_4": {
+      "name": "French Fries (200g)",
+      "tagline": "Crispy and golden french fries prepared with the highest quality.",
+      "serves": "",
+      "ingredients": [
+        "Fresh cut potatoes",
+        "Sea salt"
+      ],
+      "prepSteps": [
+        "Heat oil or air fryer",
+        "Fry until golden and crispy",
+        "Season and serve hot"
+      ]
+    },
+    "box_5": {
+      "name": "Crinkle-cut Fries (200g)",
+      "tagline": "Wonderfully crispy crinkle-cut fries with rich seasoning.",
+      "serves": "",
+      "ingredients": [
+        "Crinkle cut potatoes",
+        "Burgo special spices"
+      ],
+      "prepSteps": [
+        "Fry in hot oil for 4-5 minutes",
+        "Drain well",
+        "Serve with ketchup or cheese dip"
+      ]
+    },
+    "box_6": {
+      "name": "Onion Rings (200g)",
+      "tagline": "Crispy American onion rings, carefully prepared to be the perfect companion to your meal.",
+      "serves": "",
+      "ingredients": [
+        "American sweet onion rings",
+        "Crispy breadcrumbs coating"
+      ],
+      "prepSteps": [
+        "Deep fry until deep golden brown",
+        "Serve hot immediately"
+      ]
+    },
+    "box_7": {
+      "name": "Angus Burger Patty (150g)",
+      "tagline": "Premium Angus beef patty stuffed with rich American cheddar cheese for an unforgettable experience.",
+      "serves": "",
+      "ingredients": [
+        "150g premium Angus beef",
+        "American cheddar cheese stuffing"
+      ],
+      "prepSteps": [
+        "Grill on high heat",
+        "Do not press down to keep cheddar inside"
+      ]
+    },
+    "box_8": {
+      "name": "Buffalo Bread",
+      "tagline": "Fresh, soft, and daily baked buffalo bread to add the perfect touch to any sandwich.",
+      "serves": "",
+      "ingredients": [
+        "Premium flour, milk, butter"
+      ],
+      "prepSteps": [
+        "Split and toast on grill with butter"
+      ]
+    },
+    "box_9": {
+      "name": "Pickled Cucumber (100g)",
+      "tagline": "Crispy American pickles carefully selected to add the perfect tangy kick to your burger.",
+      "serves": "",
+      "ingredients": [
+        "Premium sliced pickled cucumber"
+      ],
+      "prepSteps": [
+        "Add on top of the cooked patty and cheese"
+      ]
+    },
+    "box_10": {
+      "name": "BBQ Sauce (25g)",
+      "tagline": "Rich and smoky BBQ sauce perfect for dipping and adding grill flavor.",
+      "serves": "",
+      "ingredients": [
+        "Smoky BBQ sauce recipe"
+      ],
+      "prepSteps": [
+        "Serve as dip or spread on bun"
+      ]
+    },
+    "box_11": {
+      "name": "Ranch Sauce (25g)",
+      "tagline": "Creamy ranch sauce packed with garlic and herb flavors.",
+      "serves": "",
+      "ingredients": [
+        "Creamy herb ranch dressing"
+      ],
+      "prepSteps": [
+        "Serve as dip for fries or onion rings"
+      ]
+    },
+    "box_12": {
+      "name": "Cheddar Cheese Sauce (15g)",
+      "tagline": "Warm, rich, and creamy cheddar cheese sauce to make your meal irresistibly cheesy.",
+      "serves": "",
+      "ingredients": [
+        "Warm cheddar cheese sauce"
+      ],
+      "prepSteps": [
+        "Pour over fries or burger"
+      ]
+    },
+    "box_13": {
+      "name": "Ketchup Sauce (140g)",
+      "tagline": "Premium tomato ketchup for dipping to bring out the best burger and fries flavors.",
+      "serves": "",
+      "ingredients": [
+        "Classic tomato ketchup"
+      ],
+      "prepSteps": [
+        "Serve as dip"
+      ]
+    },
+    "box_15": {
+      "name": "4 Pieces Burger (600g)",
+      "tagline": "Stuffed with rich, premium American cheddar cheese.",
+      "serves": "",
+      "ingredients": [
+        "600g premium Angus beef (4 patties, 150g each)",
+        "American cheddar cheese stuffing"
+      ],
+      "prepSteps": [
+        "Grill on high heat",
+        "Do not press down to keep cheddar inside"
+      ]
+    },
+    "box_16": {
+      "name": "1 Kg Burger (7 Patties - 1050g)",
+      "tagline": "Stuffed with rich, premium American cheddar cheese.",
+      "serves": "",
+      "ingredients": [
+        "1050g premium Angus beef (7 patties, 150g each)",
+        "American cheddar cheese stuffing"
+      ],
+      "prepSteps": [
+        "Grill on high heat",
+        "Do not press down to keep cheddar inside"
       ]
     }
   },
@@ -280,5 +433,26 @@
     "status": "Status",
     "total": "Total",
     "date": "Date"
+  },
+  "homePage": {
+    "menuTitle": "— BURGO MENU —",
+    "menuHeading": "Discover the BURGO World",
+    "menuSubtitle": "Three premium categories, infinite combinations of fresh ready-to-grill flavor",
+    "fromPrice": "From {{price}} {{unit}}",
+    "browseAll": "Browse all",
+    "boxImageAlt": "BURGO Box",
+    "readyTenMarquee": "✨ Ready in 10 mins",
+    "contentsTitle": "— BOX CONTENTS —",
+    "contentsHeading": "Everything You Need Is Inside",
+    "contentsSubtitle": "The BURGO box includes all fresh ingredients and premium sauces — hover over any thumbnail to preview details.",
+    "howItWorksTitle": "— HOW IT WORKS —",
+    "ctaHeading": "Ready to Start Your Experience?",
+    "ctaSubtitle": "Your Burger. Your Rules. Choose your box now.",
+    "contentLabelPatty": "6 Angus Patties Stuffed",
+    "contentLabelBread": "Premium Buffalo Bread",
+    "contentLabelPickles": "Pickled Cucumber Slices",
+    "contentLabelKetchup": "Ketchup Sauce 140g",
+    "contentLabelCheddar": "Cheddar Cheese Packs",
+    "contentLabelFries": "French Fries (200g)"
   }
 }

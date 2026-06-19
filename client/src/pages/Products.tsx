@@ -73,7 +73,7 @@ export const Products: React.FC = () => {
       <div className="flex-1 flex flex-col items-center justify-center py-32 bg-zinc-950 text-zinc-100">
         <div className="h-14 w-14 rounded-full border-4 border-zinc-800 border-t-primary animate-spinner" />
         <p className="mt-4 text-zinc-400 font-bold text-lg">
-          {isRTL ? 'جاري تحميل المنتجات...' : 'Loading products...'}
+          {t('products.loading', { defaultValue: isRTL ? 'جاري تحميل المنتجات...' : 'Loading products...' })}
         </p>
       </div>
     );
@@ -97,7 +97,7 @@ export const Products: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl sm:text-5xl font-black text-white tracking-tight"
           >
-            {isRTL ? 'قائمة المنتجات' : 'Our Menu'}
+            {t('products.pageTitle')}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -105,9 +105,7 @@ export const Products: React.FC = () => {
             transition={{ duration: 0.5, delay: 0.25 }}
             className="mt-4 text-zinc-400 text-base sm:text-lg max-w-xl mx-auto font-medium"
           >
-            {isRTL
-              ? 'كل المكونات طازجة — بوكسات، مقبلات، وإضافات'
-              : 'Fresh ingredients — boxes, appetizers & add-ons'}
+            {t('products.pageSubtitle')}
           </motion.p>
         </div>
 
@@ -141,14 +139,14 @@ export const Products: React.FC = () => {
                     {t(section.labelKey)}
                   </h2>
                   <p className="text-zinc-400 text-xs sm:text-sm mt-1 font-semibold">
-                    {section.key === 'boxes' && (isRTL ? 'بوكسات برجر جاهزة للتسوية مع كل المكونات الطازجة' : 'Ready-to-grill burger boxes with all fresh ingredients')}
-                    {section.key === 'appetizers' && (isRTL ? 'أشهى المقبلات المقرمشة المحضّرة بعناية' : 'The crispiest appetizers crafted with care')}
-                    {section.key === 'addons' && (isRTL ? 'أضف النكهات والصوصات التي تحبها لبوكسك' : 'Add your favorite sauces and flavors to your box')}
+                    {section.key === 'boxes' && t('products.categoryBoxesDesc')}
+                    {section.key === 'appetizers' && t('products.categoryAppetizersDesc')}
+                    {section.key === 'addons' && t('products.categoryAddonsDesc')}
                   </p>
                 </div>
               </div>
               <div className="bg-primary/10 border border-primary/20 text-primary text-xs font-bold px-3 py-1 rounded-xl shrink-0 font-price">
-                {items.length} {isRTL ? 'منتج' : 'items'}
+                {items.length} {t('products.itemsCount')}
               </div>
             </div>
 

@@ -154,7 +154,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         <div className="flex justify-between items-center px-6 py-4 border-b border-zinc-850 bg-zinc-950/50">
           <span className="text-primary text-xs font-black tracking-widest uppercase flex items-center gap-1.5">
             <Sparkles className="h-3.5 w-3.5" />
-            {product.category === 'boxes' ? t('products.categoryBoxes') : product.category}
+            {product.category === 'boxes' ? t('products.categoryBoxes') : (product.category === 'appetizers' ? t('products.categoryAppetizers') : t('products.categoryAddons'))}
           </span>
           <button
             onClick={onClose}
@@ -239,7 +239,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
           {product.category === 'boxes' && upsells.length > 0 && (
             <div className="pt-6 border-t border-zinc-850 space-y-4">
               <h4 className="text-xs font-black tracking-widest text-primary uppercase">
-                {isRTL ? 'أضف معاها (موصى به)' : 'You might also like (Recommended)'}
+                {t('products.recommendations')}
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {upsells.map((up) => {
@@ -283,7 +283,7 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         <div className="px-6 py-4 border-t border-zinc-850 bg-zinc-950/50 flex items-center justify-between gap-4">
           <div className="flex flex-col">
             <span className="text-[10px] text-zinc-500 font-bold uppercase tracking-wider">
-              {isRTL ? 'سعر البوكس' : 'Box Price'}
+              {t('products.boxPrice')}
             </span>
             <div className="flex items-baseline gap-2">
               <span className="text-2xl font-black text-primary font-price">

@@ -133,6 +133,28 @@ const defaultProducts: Product[] = [
     category: "premium",
     ingredients: ["باتي فطر بورتوبيلو", "جبن موزاريلا", "فلفل مشوي", "بيستو", "خبز سياباتا"],
     prepSteps: ["شوّي الفطر على نار عالية دقيقتين كل جهة", "حط الجبن وغطّيه لحظة", "ركّب مع الفلفل والبيستو"]
+  },
+  {
+    id: 15,
+    name: "4 Pieces Burger (600g)",
+    description: "محشية جبن شيدر أمريكي غني فاخر وممتاز.",
+    price: 250,
+    badge: null,
+    image: "/ref/IMG-20260615-WA0036.jpg",
+    category: "addons",
+    ingredients: ["600g premium Angus beef (4 patties, 150g each)", "American cheddar cheese stuffing"],
+    prepSteps: ["Grill on high heat", "Do not press down to keep cheddar inside"]
+  },
+  {
+    id: 16,
+    name: "1 Kg Burger (7 Patties - 1050g)",
+    description: "محشو جبن شيدر أمريكي غني فاخر وممتاز.",
+    price: 450,
+    badge: null,
+    image: "/ref/IMG-20260615-WA0036.jpg",
+    category: "addons",
+    ingredients: ["1050g premium Angus beef (7 patties, 150g each)", "American cheddar cheese stuffing"],
+    prepSteps: ["Grill on high heat", "Do not press down to keep cheddar inside"]
   }
 ];
 

@@ -102,46 +102,40 @@ export const Home: React.FC = () => {
     {
       key: 'boxes',
       img: BOX_IMG,
-      label: isRTL ? 'البوكسات' : 'Boxes',
-      sub: isRTL
-        ? 'بوكسات برجر أنجوس محشية جبن شيدر أمريكي — جاهزة للتسوية'
-        : 'Angus burger boxes stuffed with cheddar cheese — grill-ready',
+      label: t('products.categoryBoxes'),
+      sub: t('products.categoryBoxesDesc'),
       accent: '#D97706',
       stars: [80, 250, 450],
-      unit: isRTL ? 'جنيه' : 'EGP',
+      unit: t('products.currency'),
     },
     {
       key: 'appetizers',
       img: ONION_RINGS,
-      label: isRTL ? 'المقبلات' : 'Appetizers',
-      sub: isRTL
-        ? 'بطاطس فرنش فراي، كرانكل كت، حلقات بصل'
-        : 'French Fries, Crinkle-cut, Onion Rings',
+      label: t('products.categoryAppetizers'),
+      sub: t('products.categoryAppetizersDesc'),
       accent: '#EA580C',
       stars: [40, 55, 70],
-      unit: isRTL ? 'جنيه' : 'EGP',
+      unit: t('products.currency'),
     },
     {
       key: 'addons',
       img: CHEDDAR,
-      label: isRTL ? 'الإضافات' : 'Add-ons',
-      sub: isRTL
-        ? 'صوصات، جبن شيدر، خيار مخلل، عيش بافلو'
-        : 'Sauces, cheddar slices, pickles, buffalo bread',
+      label: t('products.categoryAddons'),
+      sub: t('products.categoryAddonsDesc'),
       accent: '#CA8A04',
       stars: [7.5, 12, 20],
-      unit: isRTL ? 'جنيه' : 'EGP',
+      unit: t('products.currency'),
     },
   ];
 
   /* ── Box contents preview ────────────────────────────────────── */
   const boxContents = [
-    { img: PATTY_IMG, label: isRTL ? '6 قطع برجر أنجوس محشية' : '6 Angus Patties Stuffed' },
-    { img: BREAD_IMG, label: isRTL ? 'عيش بافلو المميز' : 'Premium Buffalo Bread' },
-    { img: PICKLES, label: isRTL ? 'خيار مخلل أمريكي' : 'Pickled Cucumber Slices' },
-    { img: KETCHUP, label: isRTL ? 'صوص كاتشب 140 جم' : 'Ketchup Sauce 140g' },
-    { img: CHEDDAR, label: isRTL ? 'أظرف جبن شيدر' : 'Cheddar Cheese Packs' },
-    { img: FRENCH_FRIES, label: isRTL ? 'بطاطس فرنش فراي' : 'French Fries (200g)' },
+    { img: PATTY_IMG, label: t('homePage.contentLabelPatty') },
+    { img: BREAD_IMG, label: t('homePage.contentLabelBread') },
+    { img: PICKLES, label: t('homePage.contentLabelPickles') },
+    { img: KETCHUP, label: t('homePage.contentLabelKetchup') },
+    { img: CHEDDAR, label: t('homePage.contentLabelCheddar') },
+    { img: FRENCH_FRIES, label: t('homePage.contentLabelFries') },
   ];
 
   return (
@@ -178,15 +172,13 @@ export const Home: React.FC = () => {
           <FadeInSection>
             <div className="text-center mb-20 py-4">
               <span className="inline-block text-primary text-xs font-black tracking-widest uppercase mb-4">
-                {isRTL ? '— قائمة بورجو —' : '— BURGO MENU —'}
+                {t('homePage.menuTitle')}
               </span>
               <h2 className="text-3xl sm:text-5xl font-black text-charcoal">
-                {isRTL ? 'اكتشف عالم بورجو' : 'Discover the BURGO World'}
+                {t('homePage.menuHeading')}
               </h2>
               <p className="mt-5 text-text-muted max-w-xl mx-auto text-sm sm:text-base font-medium leading-relaxed">
-                {isRTL
-                  ? 'ثلاثة أقسام، لا حدود للطعم الفاخر والمكونات الطازجة المحضّرة لك خصيصاً'
-                  : 'Three premium categories, infinite combinations of fresh ready-to-grill flavor'}
+                {t('homePage.menuSubtitle')}
               </p>
             </div>
           </FadeInSection>
@@ -230,7 +222,7 @@ export const Home: React.FC = () => {
                               key={i}
                               className="text-[10px] font-black px-2.5 py-1 rounded-lg bg-primary/10 text-primary border border-primary/25 backdrop-blur-sm"
                             >
-                              {isRTL ? `يبدأ من ${p} ${sec.unit}` : `From ${p} ${sec.unit}`}
+                              {t('homePage.fromPrice', { price: p, unit: sec.unit })}
                             </span>
                           ))}
                         </div>
@@ -245,7 +237,7 @@ export const Home: React.FC = () => {
 
                       {/* CTA */}
                       <div className="flex items-center gap-1.5 text-xs font-bold text-primary mt-2">
-                        <span>{isRTL ? 'تصفح الكل' : 'Browse all'}</span>
+                        <span>{t('homePage.browseAll')}</span>
                         <ArrowIcon className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                       </div>
                     </div>
@@ -271,7 +263,7 @@ export const Home: React.FC = () => {
                     <motion.img
                       key={activeImage}
                       src={activeImage}
-                      alt={isRTL ? 'بوكس بورجو' : 'BURGO Box'}
+                      alt={t('homePage.boxImageAlt')}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -285,22 +277,20 @@ export const Home: React.FC = () => {
 
                 {/* Floating badge */}
                 <div className="absolute -bottom-4 -right-4 bg-primary text-white rounded-2xl px-5 py-3 shadow-xl font-bold text-sm select-none z-10 animate-pulse-glow">
-                  {isRTL ? '✨ جاهز في 10 دقايق' : '✨ Ready in 10 mins'}
+                  {t('homePage.readyTenMarquee')}
                 </div>
               </div>
 
               {/* Right: Contents */}
               <div className="flex-1">
                 <span className="text-primary text-xs font-black tracking-widest uppercase">
-                  {isRTL ? '— محتويات البوكس —' : '— BOX CONTENTS —'}
+                  {t('homePage.contentsTitle')}
                 </span>
                 <h2 className="mt-3 text-3xl sm:text-4xl font-black text-charcoal leading-tight">
-                  {isRTL ? 'كل اللي محتاجه جوّا البوكس' : "Everything You Need Is Inside"}
+                  {t('homePage.contentsHeading')}
                 </h2>
                 <p className="mt-4 text-text-muted leading-relaxed font-medium">
-                  {isRTL
-                    ? 'بوكس بورجو يحتوي على كل المكونات الطازجة والصوصات الفاخرة — حرك الماوس على أي مكون لعرض تفاصيله.'
-                    : 'The BURGO box includes all fresh ingredients and premium sauces — hover over any thumbnail to preview details.'}
+                  {t('homePage.contentsSubtitle')}
                 </p>
 
                 {/* Contents grid with hover listeners to crossfade the main image */}
@@ -345,7 +335,7 @@ export const Home: React.FC = () => {
           <FadeInSection>
             <div className="text-center mb-20 py-4">
               <span className="inline-block text-primary text-xs font-black tracking-widest uppercase mb-4">
-                {isRTL ? '— كيف تتحضّر —' : '— HOW IT WORKS —'}
+                {t('homePage.howItWorksTitle')}
               </span>
               <h2 className="text-3xl sm:text-4xl font-black text-charcoal">
                 {t('howItWorks.title')}
@@ -411,12 +401,10 @@ export const Home: React.FC = () => {
         <FadeInSection>
           <div className="relative z-10 max-w-3xl mx-auto text-center">
             <h2 className="text-3xl sm:text-5xl font-black text-charcoal leading-tight">
-              {isRTL ? 'جاهز تبدأ تجربتك؟' : 'Ready to Start Your Experience?'}
+              {t('homePage.ctaHeading')}
             </h2>
             <p className="mt-5 text-text-muted text-base sm:text-lg max-w-xl mx-auto font-medium">
-              {isRTL
-                ? 'برجرك — على مزاجك. اختار بوكسك دلوقتي.'
-                : 'Your Burger. Your Rules. Choose your box now.'}
+              {t('homePage.ctaSubtitle')}
             </p>
             <button
               onClick={() => navigate('/products')}
