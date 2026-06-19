@@ -82,6 +82,9 @@ router.post('/', (req, res) => {
     };
   });
 
+  // Add flat delivery fee of 50 EGP
+  computedTotal += 50;
+
   const newOrder: Order = {
     id: orderId,
     customerName,

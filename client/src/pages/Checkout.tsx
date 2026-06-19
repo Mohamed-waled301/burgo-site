@@ -212,7 +212,7 @@ export const Checkout: React.FC = () => {
         // Initiate payment request
         const paymentRes = await api.post('/payment/paymob-checkout', {
           orderId: dbOrder.id,
-          amount: totalAmount,
+          amount: dbOrder.total,
           customerInfo: {
             name: data.customerName,
             phone: data.phone,
@@ -547,11 +547,11 @@ export const Checkout: React.FC = () => {
             </div>
             <div className="flex items-center justify-between text-xs text-text-muted font-medium">
               <span>{isRTL ? 'رسوم التوصيل' : 'Delivery Fees'}</span>
-              <span className="text-green-500 font-extrabold">{isRTL ? 'مجاني' : 'FREE'}</span>
+              <span className="font-price font-bold text-charcoal">50 {t('products.currency')}</span>
             </div>
             <div className="flex items-center justify-between text-base font-black text-charcoal border-t border-border/30 pt-3">
               <span>{isRTL ? 'الإجمالي الكلي' : 'Total'}</span>
-              <span className="font-price text-lg text-primary">{totalAmount} {t('products.currency')}</span>
+              <span className="font-price text-lg text-primary">{totalAmount + 50} {t('products.currency')}</span>
             </div>
           </div>
         </aside>
