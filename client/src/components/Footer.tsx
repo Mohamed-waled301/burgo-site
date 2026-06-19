@@ -82,9 +82,15 @@ export const Footer: React.FC = () => {
               </a>
             </div>
 
-            <Link to="/contact" className="text-xs font-semibold text-zinc-500 hover:text-primary transition-colors">
-              {t('nav.contact')}
-            </Link>
+            <div className="flex gap-4">
+              <Link to="/contact" className="text-xs font-semibold text-zinc-500 hover:text-primary transition-colors">
+                {t('nav.contact')}
+              </Link>
+              <span className="text-zinc-800">|</span>
+              <Link to="/my-orders" className="text-xs font-semibold text-zinc-500 hover:text-primary transition-colors">
+                {t('nav.myOrders')}
+              </Link>
+            </div>
           </div>
         </div>
 

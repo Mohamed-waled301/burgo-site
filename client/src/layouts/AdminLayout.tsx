@@ -6,6 +6,7 @@ import { LogOut, LayoutDashboard, Utensils, ClipboardList, TrendingUp } from 'lu
 import { useAuthStore } from '../store/useAuthStore';
 import { useOrderStore } from '../store/useOrderStore';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
+import { useLanguageStore } from '../store/useLanguageStore';
 import api from '../services/api';
 
 interface StatsSummary {
@@ -23,6 +24,11 @@ export const AdminLayout: React.FC = () => {
   const logout = useAuthStore((state) => state.logout);
   const checkNewOrderFlag = useOrderStore((state) => state.checkNewOrderFlag);
   const clearNewOrderFlag = useOrderStore((state) => state.clearNewOrderFlag);
+  const { adminLanguage } = useLanguageStore();
+
+  useEffect(() => {
+    i18n.changeLanguage(adminLanguage);
+  }, [adminLanguage, i18n]);
 
   const [stats, setStats] = useState<StatsSummary>({ totalOrders: 0, pendingOrders: 0, revenue: 0 });
   const [flashBadge, setFlashBadge] = useState(false);
@@ -141,7 +147,7 @@ export const AdminLayout: React.FC = () => {
 
           {/* Logout & Lang */}
           <div className="flex items-center gap-3">
-            <LanguageSwitcher />
+            <LanguageSwitcher isAdmin={true} />
             <button
               onClick={handleLogout}
               className="flex items-center gap-1 text-xs md:text-sm text-red-400 hover:text-red-300 font-bold bg-red-950/30 hover:bg-red-950/50 px-3 py-1.5 rounded-lg border border-red-900/40 transition"

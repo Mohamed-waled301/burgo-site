@@ -3,6 +3,7 @@ import cors from 'cors';
 import { initDB } from './utils/db';
 
 import authRouter from './routes/auth';
+import customerRouter from './routes/customer';
 import productsRouter from './routes/products';
 import ordersRouter from './routes/orders';
 import analyticsRouter from './routes/analytics';
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routing API Mounts
 app.use('/api/auth', authRouter);
+app.use('/api/customer', customerRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/orders', ordersRouter);
 app.use('/api/analytics', analyticsRouter);

@@ -114,8 +114,12 @@ export const BurgerParallax: React.FC<BurgerParallaxProps> = ({
         {/* Headline block */}
         <div className="flex flex-col items-center text-center">
           <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-black leading-tight text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.95)] px-4 min-h-[140px] sm:min-h-[180px] flex items-center justify-center">
-            <span className="shimmer-text-hero">{displayedText}</span>
-            {!reducedMotion && <span className="typewriter-cursor ml-1" />}
+            <span className="shimmer-text-hero">
+              {displayedText}
+              {!reducedMotion && (displayedText !== phrases[currentPhraseIdx] || isDeleting) && (
+                <span className="typewriter-cursor ml-0.5">|</span>
+              )}
+            </span>
           </h1>
           
           {subtitle && (

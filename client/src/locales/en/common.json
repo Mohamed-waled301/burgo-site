@@ -4,6 +4,7 @@
     "home": "Home",
     "products": "Boxes",
     "contact": "Contact Us",
+    "myOrders": "My Orders",
     "admin": "Admin Panel"
   },
   "hero": {
@@ -249,9 +250,35 @@
   },
   "contactPage": {
     "title": "Get In Touch",
-    "subtitle": "Questions about your box or order? Contact our support team directly on WhatsApp.",
+    "subtitle": "Questions about your box or order? Fill out the form below to chat with our support team on WhatsApp.",
     "ctaBtn": "Chat via WhatsApp",
     "phone": "+20 122 154 2589",
-    "hours": "Daily: 12 PM - 12 AM"
+    "hours": "Daily: 12 PM - 12 AM",
+    "form": {
+      "name": "Your Name",
+      "namePlaceholder": "Enter your name",
+      "phone": "WhatsApp Number",
+      "phonePlaceholder": "e.g. 01012345678",
+      "message": "Your Message",
+      "messagePlaceholder": "Write your inquiry here...",
+      "send": "Send Message via WhatsApp",
+      "validation": {
+        "name": "Name must be at least 3 characters",
+        "phone": "Please enter a valid 11-digit mobile number starting with 01",
+        "message": "Message must be at least 10 characters"
+      }
+    }
+  },
+  "myOrders": {
+    "title": "My Orders",
+    "subtitle": "Track your past and active orders",
+    "searchPlaceholder": "Search by Order ID (e.g. 62138)",
+    "searchBtn": "Track Order",
+    "noOrders": "No orders found.",
+    "emptyList": "You haven't placed any orders yet.",
+    "viewOnHomepage": "Explore our delicious boxes and make your first order!",
+    "status": "Status",
+    "total": "Total",
+    "date": "Date"
   }
 }

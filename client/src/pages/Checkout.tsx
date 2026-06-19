@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useForm } from 'react-hook-form';
@@ -7,6 +7,8 @@ import * as z from 'zod';
 import { CreditCard, Wallet, CircleDollarSign, AlertCircle } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
 import { useOrderStore } from '../store/useOrderStore';
+import { useCustomerAuthStore } from '../store/useCustomerAuthStore';
+import { useAuthModalStore } from '../store/useAuthModalStore';
 import api from '../services/api';
 
 const GOVERNORATES_AR = [
@@ -30,10 +32,20 @@ export const Checkout: React.FC = () => {
   
   const { items, getCartTotal, clearCart } = useCartStore();
   const placeOrder = useOrderStore((state) => state.placeOrder);
+  const { user, isAuthenticated } = useCustomerAuthStore();
+  const openAuthModal = useAuthModalStore((s) => s.open);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   const totalAmount = getCartTotal();
+
+  // ── Auth guard: if not authenticated, send back and open modal ────────────
+  useEffect(() => {
+    if (!isAuthenticated) {
+      navigate('/products', { replace: true });
+      openAuthModal();
+    }
+  }, [isAuthenticated, navigate, openAuthModal]);
 
   // Zod Validation Schema
   const schema = z.object({
@@ -58,9 +70,10 @@ export const Checkout: React.FC = () => {
   } = useForm<FormData>({
     resolver: zodResolver(schema),
     defaultValues: {
-      customerName: '',
-      phone: '',
-      address: '',
+      // Pre-fill from saved user profile
+      customerName: user?.fullName || '',
+      phone: user?.phoneNumber || '',
+      address: user?.address || '',
       governorate: '',
       notes: '',
       paymentMethod: 'cod',
@@ -95,6 +108,16 @@ export const Checkout: React.FC = () => {
         };
 
         const res = await placeOrder(orderData);
+        try {
+          const existing = localStorage.getItem('bb_placed_order_ids');
+          const list = existing ? JSON.parse(existing) : [];
+          if (!list.includes(res.id)) {
+            list.push(res.id);
+            localStorage.setItem('bb_placed_order_ids', JSON.stringify(list));
+          }
+        } catch (e) {
+          console.error('Failed to save order ID to local storage', e);
+        }
         clearCart();
         navigate(`/checkout/success?order_id=${res.id}`);
       } else {
@@ -118,6 +141,16 @@ export const Checkout: React.FC = () => {
 
         // Post order details to database first
         const dbOrder = await placeOrder(orderPlaceholderData);
+        try {
+          const existing = localStorage.getItem('bb_placed_order_ids');
+          const list = existing ? JSON.parse(existing) : [];
+          if (!list.includes(dbOrder.id)) {
+            list.push(dbOrder.id);
+            localStorage.setItem('bb_placed_order_ids', JSON.stringify(list));
+          }
+        } catch (e) {
+          console.error('Failed to save order ID to local storage', e);
+        }
 
         // Initiate payment request
         const paymentRes = await api.post('/payment/paymob-checkout', {
@@ -379,11 +412,11 @@ export const Checkout: React.FC = () => {
           <div className="divide-y divide-border/30 max-h-96 overflow-y-auto pr-1">
             {items.map((item) => (
               <div key={item.id} className="flex items-center gap-4 py-3 first:pt-0 last:pb-0">
-                <div className="h-12 w-12 rounded-xl bg-background flex items-center justify-center border border-border/40 text-2xl shrink-0 overflow-hidden select-none">
-                  {item.image.startsWith('/') || item.image.startsWith('http') ? (
-                    <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                <div className="h-12 w-12 rounded-xl bg-background flex items-center justify-center border border-border/40 text-2xl shrink-0 overflow-hidden select-none bg-zinc-950">
+                  {item.image && (item.image.startsWith('/') || item.image.startsWith('http')) ? (
+                    <img src={item.image} alt={item.name} className="w-full h-full object-contain p-1" />
                   ) : (
-                    item.image
+                    item.image || '🍔'
                   )}
                 </div>
                 <div className="flex-1 min-w-0">

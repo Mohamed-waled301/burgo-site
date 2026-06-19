@@ -241,6 +241,19 @@
         "Serve as dip"
       ],
       "active": true
+    },
+    {
+      "id": 14,
+      "name": "sffwef",
+      "description": "dfcwegvfqrev",
+      "price": 1243,
+      "badge": "wwqd",
+      "image": "/ref/IMG-20260615-WA0025.jpg",
+      "category": "appetizers",
+      "ingredients": [],
+      "prepSteps": [],
+      "active": false,
+      "discount": null
     }
   ],
   "orders": [
@@ -285,6 +298,59 @@
       "paymentMethod": "cod",
       "status": "delivered",
       "createdAt": "2026-06-18T00:54:54.756Z"
+    },
+    {
+      "id": "62138",
+      "customerName": "John Doe",
+      "phone": "01012345678",
+      "address": "123 Main Street, Apt 4B",
+      "governorate": "Cairo",
+      "notes": "",
+      "items": [
+        {
+          "id": 1,
+          "name": "BURGO Family Box",
+          "price": 580,
+          "quantity": 2,
+          "image": "/ref/IMG-20260615-WA0027.jpg"
+        }
+      ],
+      "total": 1160,
+      "paymentMethod": "cod",
+      "status": "pending",
+      "createdAt": "2026-06-19T14:01:31.022Z"
+    },
+    {
+      "id": "91573",
+      "customerName": "fsdfsef",
+      "phone": "01284838592",
+      "address": "sdfsdf",
+      "governorate": "القاهرة",
+      "notes": "dsfsdfsdf",
+      "items": [
+        {
+          "id": 1,
+          "name": "BURGO Family Box",
+          "price": 580,
+          "quantity": 1,
+          "image": "/ref/IMG-20260615-WA0027.jpg"
+        }
+      ],
+      "total": 580,
+      "paymentMethod": "cod",
+      "status": "pending",
+      "createdAt": "2026-06-19T14:31:13.940Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "mql4v9dxlrr0f0p",
+      "fullName": "Ans Ahmed",
+      "address": "ش 4 ارض زقزوق خلف شركة الطويل اول منتزة - الاسكندرية",
+      "phoneNumber": "01284838592",
+      "username": "ansalking150",
+      "passwordHash": "$2b$10$rivg/1tBgSIxpOveNBtsiOr/CdTqhKdpzEtVuiMrW6r7SSMC4A86.",
+      "createdAt": "2026-06-19T16:18:37.509Z"
     }
   ]
 }

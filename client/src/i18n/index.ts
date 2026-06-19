@@ -40,7 +40,11 @@ applyDocAttributes(savedLang);
 
 i18n.on('languageChanged', (lng) => {
   applyDocAttributes(lng);
-  localStorage.setItem('bb_language', lng);
+  if (window.location.pathname.startsWith('/admin')) {
+    localStorage.setItem('bb_admin_language', lng);
+  } else {
+    localStorage.setItem('bb_language', lng);
+  }
 });
 
 export default i18n;

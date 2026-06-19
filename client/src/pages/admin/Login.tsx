@@ -132,12 +132,6 @@ export const Login: React.FC = () => {
           </button>
         </form>
 
-        {/* Default credentials indicator for demo purposes */}
-        <div className="mt-6 border-t border-gray-800 pt-4 text-center">
-          <p className="text-[10px] text-gray-500">
-            Demo credentials: <span className="font-mono text-gray-400 select-text">admin</span> / <span className="font-mono text-gray-400 select-text">BurgerBox2025!</span>
-          </p>
-        </div>
       </div>
     </div>
   );

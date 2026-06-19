@@ -58,17 +58,10 @@ export const Products: React.FC = () => {
   const { t, i18n } = useTranslation();
   const isRTL = i18n.language === 'ar';
   const { products, isLoading, fetchProducts } = useProductStore();
-  const [scrollY, setScrollY] = useState(0);
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   useEffect(() => {
     fetchProducts();
-
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
   }, [fetchProducts]);
 
   // Filter products by category, checking p.active !== false
@@ -94,15 +87,8 @@ export const Products: React.FC = () => {
         className="relative w-full overflow-hidden flex flex-col items-center justify-center text-center py-24 px-4 select-none border-b border-zinc-900"
         style={{ minHeight: 280 }}
       >
-        {/* Background box image with scroll parallax support */}
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ 
-            backgroundImage: "url('/ref/IMG-20260615-WA0026.jpg')",
-            transform: `translateY(${scrollY * 0.15}px) scale(1.05)`
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/80 via-zinc-950/65 to-zinc-950" />
+        {/* Pure premium dark gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 via-zinc-950 to-zinc-950" />
 
         <div className="relative z-10 max-w-3xl mx-auto">
           <motion.h1
@@ -140,7 +126,7 @@ export const Products: React.FC = () => {
           <section
             key={section.key}
             id={`section-${section.key}`}
-            className="w-full bg-zinc-950/50"
+            className="w-full bg-transparent"
           >
             {/* Clean Section Header (No background image/panel behind it) */}
             <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-4 flex flex-col sm:flex-row items-center sm:items-end justify-between border-b border-zinc-900 gap-4 text-center sm:text-start">

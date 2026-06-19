@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X, Plus, Minus, ShoppingBag } from 'lucide-react';
 import { useCartStore } from '../store/useCartStore';
+import { useCustomerAuthStore } from '../store/useCustomerAuthStore';
+import { useAuthModalStore } from '../store/useAuthModalStore';
 
 export const CartDrawer: React.FC = () => {
   const { t } = useTranslation();
@@ -18,9 +20,17 @@ export const CartDrawer: React.FC = () => {
     getCartTotal 
   } = useCartStore();
 
+  const isAuthenticated = useCustomerAuthStore((s) => s.isAuthenticated);
+  const openAuthModal = useAuthModalStore((s) => s.open);
+
   const handleCheckoutClick = () => {
     setCartOpen(false);
-    navigate('/checkout');
+    if (isAuthenticated) {
+      navigate('/checkout');
+    } else {
+      // Open auth modal — cart is preserved in Zustand
+      openAuthModal();
+    }
   };
 
   return (

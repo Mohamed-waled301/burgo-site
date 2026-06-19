@@ -2,11 +2,21 @@ import React from 'react';
 import { useLanguageStore } from '../store/useLanguageStore';
 import { motion } from 'framer-motion';
 
-export const LanguageSwitcher: React.FC = () => {
-  const { language, setLanguage } = useLanguageStore();
+interface LanguageSwitcherProps {
+  isAdmin?: boolean;
+}
+
+export const LanguageSwitcher: React.FC<LanguageSwitcherProps> = ({ isAdmin }) => {
+  const { language, adminLanguage, setLanguage, setAdminLanguage } = useLanguageStore();
+
+  const currentLang = isAdmin ? adminLanguage : language;
 
   const handleLanguageChange = (lang: string) => {
-    setLanguage(lang);
+    if (isAdmin) {
+      setAdminLanguage(lang);
+    } else {
+      setLanguage(lang);
+    }
   };
 
   return (
@@ -16,10 +26,10 @@ export const LanguageSwitcher: React.FC = () => {
         <button
           onClick={() => handleLanguageChange('ar')}
           className={`relative z-10 rounded-full px-3.5 py-1.5 text-xs font-black transition-colors duration-250 cursor-pointer border-0 bg-transparent outline-none ${
-            language === 'ar' ? 'text-white font-extrabold' : 'text-zinc-500 hover:text-zinc-300'
+            currentLang === 'ar' ? 'text-white font-extrabold' : 'text-zinc-500 hover:text-zinc-300'
           }`}
         >
-          {language === 'ar' && (
+          {currentLang === 'ar' && (
             <motion.div
               layoutId="activeLangIndicator"
               className="absolute inset-0 bg-primary rounded-full z-[-1]"
@@ -33,10 +43,10 @@ export const LanguageSwitcher: React.FC = () => {
         <button
           onClick={() => handleLanguageChange('en')}
           className={`relative z-10 rounded-full px-3.5 py-1.5 text-xs font-black transition-colors duration-250 cursor-pointer border-0 bg-transparent outline-none ${
-            language === 'en' ? 'text-white font-extrabold' : 'text-zinc-500 hover:text-zinc-300'
+            currentLang === 'en' ? 'text-white font-extrabold' : 'text-zinc-500 hover:text-zinc-300'
           }`}
         >
-          {language === 'en' && (
+          {currentLang === 'en' && (
             <motion.div
               layoutId="activeLangIndicator"
               className="absolute inset-0 bg-primary rounded-full z-[-1]"
@@ -49,3 +59,4 @@ export const LanguageSwitcher: React.FC = () => {
     </div>
   );
 };
+

@@ -41,9 +41,24 @@ export interface Order {
   createdAt: string;
 }
 
+// ─── Customer User Schema (mirrors MongoDB document structure) ───────────────
+export interface User {
+  id: string;            // uuid-style string — drop-in for MongoDB _id
+  fullName: string;
+  address: string;
+  phoneNumber: string;
+  username: string;      // unique
+  passwordHash: string;  // bcryptjs hash, never exposed to client
+  createdAt: string;     // ISO 8601
+}
+
+// ─── Public profile returned to the client (no hash) ────────────────────────
+export type UserProfile = Omit<User, 'passwordHash'>;
+
 interface DatabaseSchema {
   products: Product[];
   orders: Order[];
+  users: User[];
 }
 
 // In Vercel serverless, __dirname is the compiled function dir; fall back gracefully
@@ -129,9 +144,28 @@ export function initDB() {
   if (!fs.existsSync(DB_FILE)) {
     const initialData: DatabaseSchema = {
       products: defaultProducts,
-      orders: []
+      orders: [],
+      users: []
     };
     fs.writeFileSync(DB_FILE, JSON.stringify(initialData, null, 2), 'utf-8');
+  } else {
+    // Migrate existing db.json: add users[] if missing
+    try {
+      const raw = fs.readFileSync(DB_FILE, 'utf-8');
+      const data = JSON.parse(raw) as any;
+      let changed = false;
+      if (!Array.isArray(data.users)) {
+        data.users = [];
+        changed = true;
+      }
+      if (changed) {
+        fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf-8');
+      }
+    } catch {
+      // If corrupt, reinitialise
+      const initialData: DatabaseSchema = { products: defaultProducts, orders: [], users: [] };
+      fs.writeFileSync(DB_FILE, JSON.stringify(initialData, null, 2), 'utf-8');
+    }
   }
 }
 

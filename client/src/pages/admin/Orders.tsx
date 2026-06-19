@@ -214,11 +214,11 @@ export const Orders: React.FC = () => {
                   {selectedOrder.items.map((item, i) => (
                     <div key={i} className="flex justify-between items-center py-2 text-xs">
                       <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 rounded-lg bg-gray-950 flex items-center justify-center border border-gray-850 text-xl shrink-0 overflow-hidden select-none">
-                          {item.image.startsWith('/') || item.image.startsWith('http') ? (
-                            <img src={item.image} alt={item.name} className="w-full h-full object-cover" />
+                        <div className="h-10 w-10 rounded-lg bg-gray-950 flex items-center justify-center border border-gray-850 text-xl shrink-0 overflow-hidden select-none bg-zinc-950">
+                          {item.image && (item.image.startsWith('/') || item.image.startsWith('http')) ? (
+                            <img src={item.image} alt={item.name} className="w-full h-full object-contain p-1" />
                           ) : (
-                            item.image
+                            item.image || '🍔'
                           )}
                         </div>
                         <div>

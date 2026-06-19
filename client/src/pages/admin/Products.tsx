@@ -18,7 +18,7 @@ export const Products: React.FC = () => {
   const [formName, setFormName] = useState('');
   const [formPrice, setFormPrice] = useState('');
   const [formDescription, setFormDescription] = useState('');
-  const [formCategory, setFormCategory] = useState('classic');
+  const [formCategory, setFormCategory] = useState('boxes');
   const [formImage, setFormImage] = useState('/ref/IMG-20260615-WA0025.jpg');
   const [formBadge, setFormBadge] = useState('');
   const [formIngredients, setFormIngredients] = useState('');
@@ -37,7 +37,7 @@ export const Products: React.FC = () => {
     setFormName('');
     setFormPrice('');
     setFormDescription('');
-    setFormCategory('classic');
+    setFormCategory('boxes');
     setFormImage('/ref/IMG-20260615-WA0025.jpg');
     setFormBadge('');
     setFormIngredients('');
@@ -226,9 +226,9 @@ export const Products: React.FC = () => {
                     {product.price} {t('products.currency')}
                   </td>
                   <td className="px-6 py-3 whitespace-nowrap text-gray-400">
-                    {product.category === 'classic' && t('products.categoryClassic')}
-                    {product.category === 'spicy' && t('products.categorySpicy')}
-                    {product.category === 'premium' && t('products.categoryPremium')}
+                    {product.category === 'boxes' && t('products.categoryBoxes')}
+                    {product.category === 'appetizers' && t('products.categoryAppetizers')}
+                    {product.category === 'addons' && t('products.categoryAddons')}
                   </td>
                   <td className="px-6 py-3 whitespace-nowrap">
                     {product.badge ? (
@@ -383,9 +383,9 @@ export const Products: React.FC = () => {
                     onChange={(e) => setFormCategory(e.target.value)}
                     className="w-full rounded-xl border border-gray-800 bg-gray-950 px-3 py-2 text-xs text-white focus:outline-none focus:border-primary"
                   >
-                    <option value="classic">{t('products.categoryClassic')}</option>
-                    <option value="spicy">{t('products.categorySpicy')}</option>
-                    <option value="premium">{t('products.categoryPremium')}</option>
+                    <option value="boxes">{t('products.categoryBoxes')}</option>
+                    <option value="appetizers">{t('products.categoryAppetizers')}</option>
+                    <option value="addons">{t('products.categoryAddons')}</option>
                   </select>
                 </div>
                 {/* Image */}

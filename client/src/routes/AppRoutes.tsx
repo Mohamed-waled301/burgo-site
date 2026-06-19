@@ -1,10 +1,13 @@
+import { useEffect } from 'react';
 import { Routes, Route, Navigate, Outlet, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import { useAuthStore } from '../store/useAuthStore';
+import { useLanguageStore } from '../store/useLanguageStore';
 import { Navbar } from '../components/Navbar';
 import { Footer } from '../components/Footer';
 import { CartDrawer } from '../components/CartDrawer';
+import { AuthModal } from '../components/AuthModal';
 
 // Lazy loading/direct imports of page views
 import { Home } from '../pages/Home';
@@ -13,6 +16,7 @@ import { Contact } from '../pages/Contact';
 import { Checkout } from '../pages/Checkout';
 import { PaymentSimulator } from '../pages/PaymentSimulator';
 import { OrderSuccess } from '../pages/OrderSuccess';
+import { MyOrders } from '../pages/MyOrders';
 import { Login as AdminLogin } from '../pages/admin/Login';
 import { AdminLayout } from '../layouts/AdminLayout';
 import { Dashboard as AdminDashboard } from '../pages/admin/Dashboard';
@@ -24,8 +28,13 @@ import { Analytics as AdminAnalytics } from '../pages/admin/Analytics';
 const PublicLayout: React.FC = () => {
   const location = useLocation();
   const { i18n } = useTranslation();
+  const { language } = useLanguageStore();
   const isRTL = i18n.language === 'ar';
   const hasReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  useEffect(() => {
+    i18n.changeLanguage(language);
+  }, [language, location.pathname, i18n]);
 
   return (
     <div className="min-h-screen flex flex-col bg-background text-charcoal transition-colors duration-300" dir={isRTL ? 'rtl' : 'ltr'}>
@@ -45,6 +54,8 @@ const PublicLayout: React.FC = () => {
         </AnimatePresence>
       </main>
       <CartDrawer />
+      {/* Global AuthModal — triggered by useAuthModalStore from anywhere */}
+      <AuthModal />
       <Footer />
     </div>
   );
@@ -67,6 +78,7 @@ export const AppRoutes: React.FC = () => {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/checkout/payment-simulator" element={<PaymentSimulator />} />
         <Route path="/checkout/success" element={<OrderSuccess />} />
+        <Route path="/my-orders" element={<MyOrders />} />
       </Route>
 
       {/* Admin Login Gateway (Standalone) */}

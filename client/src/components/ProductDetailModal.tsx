@@ -81,8 +81,10 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
       image: p.image,
     };
 
+    // Add item immediately to state
+    addItem(itemToAdd);
+
     if (hasReducedMotion) {
-      addItem(itemToAdd);
       setCartOpen(true);
       return;
     }
@@ -109,7 +111,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
         height: Math.min(srcRect.height, 120),
       });
     } else {
-      addItem(itemToAdd);
       setCartOpen(true);
     }
   };
@@ -336,13 +337,6 @@ export const ProductDetailModal: React.FC<ProductDetailModalProps> = ({
               ease: [0.25, 1, 0.5, 1],
             }}
             onAnimationComplete={() => {
-              const itemToAdd = {
-                id: product.id,
-                name: product.name,
-                price: finalPrice,
-                image: product.image,
-              };
-              addItem(itemToAdd);
               setCartOpen(true);
               setFlyingImage(null);
             }}

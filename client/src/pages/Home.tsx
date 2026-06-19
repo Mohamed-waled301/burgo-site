@@ -203,49 +203,50 @@ export const Home: React.FC = () => {
               <motion.div key={sec.key} variants={gridItemVariants}>
                 <div
                   onClick={() => navigate('/products')}
-                  className="blob-card-wrapper h-[420px] group cursor-pointer shadow-premium-glow shadow-premium-glow-hover transition-all duration-300"
+                  className="blob-card-wrapper h-[450px] group cursor-pointer shadow-premium-glow shadow-premium-glow-hover transition-all duration-300"
                 >
                   {/* Animated background blob */}
                   <div className="absolute z-0 top-1/2 left-1/2 w-48 h-48 rounded-full bg-primary/20 dark:bg-primary/10 filter blur-2xl opacity-60 animate-blob-bounce select-none pointer-events-none" />
 
                   {/* Inner glass face */}
-                  <div className="blob-card-face relative overflow-hidden h-full">
-                    {/* Background image */}
-                    <img
-                      src={sec.img}
-                      alt={sec.label}
-                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                    />
+                  <div className="blob-card-face relative overflow-hidden h-full bg-zinc-950/80 border border-zinc-800 flex flex-col justify-between">
+                    {/* Contained image container */}
+                    <div className="w-full h-48 bg-zinc-950 p-4 flex items-center justify-center border-b border-zinc-900 shrink-0">
+                      <img
+                        src={sec.img}
+                        alt={sec.label}
+                        className="w-full h-full object-contain transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
+                    </div>
 
-                    {/* Gradient overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/40 to-transparent" />
+                    {/* Content */}
+                    <div className="p-5 flex-1 flex flex-col justify-between">
+                      <div>
+                        {/* Price pills */}
+                        <div className="flex gap-2 mb-3 flex-wrap">
+                          {sec.stars.map((p, i) => (
+                            <span
+                              key={i}
+                              className="text-[10px] font-black px-2.5 py-1 rounded-lg bg-primary/10 text-primary border border-primary/25 backdrop-blur-sm"
+                            >
+                              {isRTL ? `يبدأ من ${p} ${sec.unit}` : `From ${p} ${sec.unit}`}
+                            </span>
+                          ))}
+                        </div>
 
-                    {/* Content (z-10 to stay clickable above blob overlay) */}
-                    <div className="absolute bottom-0 inset-x-0 p-6 z-10">
-                      {/* Price pills */}
-                      <div className="flex gap-2 mb-3 flex-wrap">
-                        {sec.stars.map((p, i) => (
-                          <span
-                            key={i}
-                            className="text-xs font-extrabold px-3 py-1 rounded-xl bg-primary/20 text-primary border border-primary/30 backdrop-blur-sm"
-                          >
-                            {isRTL ? `يبدأ من ${p} ${sec.unit}` : `From ${p} ${sec.unit}`}
-                          </span>
-                        ))}
+                        <h3 className="text-lg sm:text-xl font-black text-white mb-2 leading-tight">
+                          {sec.label}
+                        </h3>
+                        <p className="text-zinc-400 text-xs leading-relaxed font-semibold">
+                          {sec.sub}
+                        </p>
                       </div>
 
-                      <h3 className="text-2xl sm:text-3xl font-black text-white mb-2 drop-shadow-md">
-                        {sec.label}
-                      </h3>
-                      <p className="text-gray-300 text-sm leading-relaxed mb-4 drop-shadow-sm font-medium">
-                        {sec.sub}
-                      </p>
-
                       {/* CTA */}
-                      <div className="flex items-center gap-2 text-sm font-bold text-primary">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-primary mt-2">
                         <span>{isRTL ? 'تصفح الكل' : 'Browse all'}</span>
-                        <ArrowIcon className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+                        <ArrowIcon className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
                       </div>
                     </div>
                   </div>
@@ -275,7 +276,7 @@ export const Home: React.FC = () => {
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: 0.35, ease: 'easeInOut' }}
-                      className="absolute inset-0 w-full h-full object-cover"
+                      className="absolute inset-0 w-full h-full object-contain p-6"
                       loading="lazy"
                     />
                   </AnimatePresence>
@@ -322,7 +323,7 @@ export const Home: React.FC = () => {
                       <img
                         src={item.img}
                         alt={item.label}
-                        className="w-full h-20 object-cover rounded-xl border border-border/30"
+                        className="w-full h-20 object-contain p-2 bg-zinc-950 rounded-xl border border-border/30"
                         loading="lazy"
                       />
                       <span className="text-xs text-charcoal font-bold text-center leading-snug">

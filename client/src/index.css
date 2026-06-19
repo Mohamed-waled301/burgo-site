@@ -42,16 +42,16 @@
 
 /* ─── Typewriter cursor blinking ─── */
 @keyframes blink {
-  50% { border-color: transparent }
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
 }
 .typewriter-cursor {
-  border-right: 3px solid rgb(var(--color-primary));
-  animation: blink 0.75s step-end infinite;
+  animation: blink 0.8s step-end infinite;
+  color: rgb(var(--color-primary));
 }
 @media (prefers-reduced-motion: reduce) {
   .typewriter-cursor {
-    animation: none;
-    border-right: none;
+    display: none;
   }
 }
 
@@ -280,16 +280,17 @@
 
 /* Premium Glow Shadows */
 .shadow-premium-glow {
-  box-shadow: 0 4px 20px 0 rgba(249, 115, 22, 0.22);
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .shadow-premium-glow-hover {
-  transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .shadow-premium-glow-hover:hover {
-  box-shadow: 0 10px 30px 0 rgba(249, 115, 22, 0.45);
-  transform: translateY(-3px);
+  box-shadow: 0 16px 36px 0 rgba(251, 146, 60, 0.15), 0 0 0 1px rgba(251, 146, 60, 0.35);
+  transform: translateY(-4px);
 }
 
 /* Pulse animation for CTA buttons */
